@@ -1,0 +1,65 @@
+---
+title: "Interactive Bayesian Network Visualization"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r  warning=FALSE, message=FALSE}
+library(bnlearn)
+library(bnviewer)
+
+data(gaussian.test)
+bn.learn.hc = hc(gaussian.test)
+
+plot(bn.learn.hc, 
+     bayesianNetwork.layout = "layout_with_mds",
+     bayesianNetwork.title="Gaussian Bayesian Network",
+     bayesianNetwork.subtitle = "Example anywhere", 
+     bayesianNetwork.footer = "Fig. 1 - Gaussian Bayesian Network",
+     edges.dashes = FALSE)
+
+```
+
+___
+
+```{r  warning=FALSE, message=FALSE}
+library(bnlearn)
+library(bnviewer)
+
+data(gaussian.test)
+bn.learn.hc = hc(gaussian.test)
+
+plot(bn.learn.hc, 
+     bayesianNetwork.layout = "layout_in_circle",
+     bayesianNetwork.title="Gaussian Bayesian Network",
+     bayesianNetwork.subtitle = "Example anywhere", 
+     bayesianNetwork.footer = "Fig. 1 - Gaussian Bayesian Network",
+     edges.dashes = TRUE)
+
+```
+
+The ALARM ("A Logical Alarm Reduction Mechanism") is a Bayesian network designed to provide an alarm message system for patient monitoring.
+
+```{r  warning=FALSE, message=FALSE}
+library(bnlearn)
+library(bnviewer)
+
+data("alarm")
+bn.learn.hc = hc(alarm)
+
+plot(bn.learn.hc, 
+     bayesianNetwork.title="Alarm Bayesian Network",
+     bayesianNetwork.subtitle = "Example anywhere", 
+     bayesianNetwork.footer = "Fig. 1 - Alarm Bayesian Network",
+     edges.dashes = TRUE)
+
+```
