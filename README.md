@@ -2,6 +2,8 @@
 bnviewer - an R package for interactive visualization of Bayesian Networks
 ----------
 
+**bnviewer** is an R package for interactive visualization of Bayesian networks based on <a href="http://www.bnlearn.com/" target="_blank">bnlearn</a>, through visNetwork.
+
 Installation
 ------------
 
