@@ -1,6 +1,12 @@
-<center><b>bnviewer</b></center>
-An R package for interactive visualization of Bayesian Networks
+<p align="center">
+ <b style='font-size:40px;'>BNViewer</b>
+</p>
+<p align="center">
+ <b style='font-size:40px;'>An R package for interactive visualization of Bayesian Networks</b>
+</p>
+
 ----------
+
 <img src="man/figures/coronary_star_hc.gif">
 
 
