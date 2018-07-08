@@ -2,8 +2,21 @@
 bnviewer - an R package for interactive visualization of Bayesian Networks
 ----------
 
-Introduction
-----------
+Installation
+------------
+
+**bnviewer** is available on CRAN.
+
+``` r
+install.packages("bnviewer")
+```
+
+For developers, install from GitHub.
+
+``` r
+install.packages("devtools")
+devtools::install_github("robson-fernandes/bnviewer")
+```
 
 How to use
 ----------
