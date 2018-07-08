@@ -2,8 +2,34 @@
 bnviewer - an R package for interactive visualization of Bayesian Networks
 ----------
 
-**bnviewer** is an R package for interactive visualization of Bayesian networks based on <a href="http://www.bnlearn.com/" target="_blank">bnlearn</a>, through visNetwork.
+**bnviewer** is an R package for interactive visualization of Bayesian Networks based on <a href="http://www.bnlearn.com/" target="_blank">bnlearn</a>, through <a href="https://datastorm-open.github.io/visNetwork/" target="_blank">visNetwork</a>. The bnviewer package reads various structure learning algorithms provided by the <a href="http://www.bnlearn.com/" target="_blank">bnlearn</a> package, such as:
 
+ <p><em>Constraint-based structure learning algorithms</em>:</p>
+ <ul>
+   <li>PC (the <em>stable</em> version);</li>
+   <li>Grow-Shrink (GS);</li>
+   <li>Incremental Association Markov Blanket (IAMB);</li>
+   <li>Fast Incremental Association (Fast-IAMB);</li>
+   <li>Interleaved Incremental Association (Inter-IAMB);</li>
+   <li>Max-Min Parents &amp; Children (MMPC);</li>
+   <li>Semi-Interleaved Hiton-PC (SI-HITON-PC);</li>
+ </ul>
+ <p><em>Score-based structure learning algorithms</em>:</p>
+ <ul>
+   <li>Hill Climbing (HC);</li>
+   <li>Tabu Search (Tabu);</li>
+ </ul>
+ <p><em>Hybrid structure learning algorithms</em>:</p>
+ <ul>
+   <li>Max-Min Hill Climbing (MMHC);</li>
+   <li>General 2-Phase Restricted Maximization (RSMAX2);</li>
+ </ul>
+ <p><em>Local discovery algorithms</em>:</p>
+ <ul>
+   <li>Chow-Liu;</li>
+   <li>ARACNE;</li>
+ </ul>
+      
 Installation
 ------------
 
