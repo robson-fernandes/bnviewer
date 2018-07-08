@@ -16,8 +16,13 @@ plot(bayesianNetwork, bayesianNetwork.title = "",
 \item{bayesianNetwork}{A structure of a Bayesian Network
 (Example : hill-climbing (HC)).}
 
-\item{bayesianNetwork.layout}{A layout of a Bayesian Network.
-Example :
+\item{bayesianNetwork.title}{Bayesian Network title}
+
+\item{bayesianNetwork.subtitle}{Bayesian Network subtitle}
+
+\item{bayesianNetwork.footer}{Bayesian Network footer}
+
+\item{bayesianNetwork.layout}{A layout of a Bayesian Network
 \enumerate{
   \item layout_on_sphere
   \item layout_on_grid
@@ -33,6 +38,26 @@ Example :
   \item layout_nicely
   \item layout_components
 }}
+
+\item{bayesianNetwork.width}{Bayesian Network width}
+
+\item{bayesianNetwork.height}{Bayesian Network height}
+
+\item{node.shape}{A node shape of a Bayesian Network
+\enumerate{
+  \item dot (default)
+  \item circle
+  \item ellipse
+  \item database
+  \item diamond
+  \item square
+  \item triangle
+  \item box
+  \item star
+  \item text
+}}
+
+\item{node.label.prefix}{Adds a prefix to the node label}
 }
 \description{
 Interactive Bayesian Network Plots

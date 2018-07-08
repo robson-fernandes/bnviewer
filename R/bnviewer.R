@@ -16,16 +16,18 @@ if(!require("visNetwork")){
 }
 
 
-global.bayesianNetwork <<- NULL
-
-
 #' Interactive Bayesian Network Plots
 #'
 #' @param bayesianNetwork A structure of a Bayesian Network
 #' (Example : hill-climbing (HC)).
 #'
-#' @param bayesianNetwork.layout A layout of a Bayesian Network.
-#' Example :
+#' @param bayesianNetwork.title Bayesian Network title
+#'
+#' @param bayesianNetwork.subtitle Bayesian Network subtitle
+#'
+#' @param bayesianNetwork.footer Bayesian Network footer
+#'
+#' @param bayesianNetwork.layout A layout of a Bayesian Network
 #' \enumerate{
 #'   \item layout_on_sphere
 #'   \item layout_on_grid
@@ -42,8 +44,11 @@ global.bayesianNetwork <<- NULL
 #'   \item layout_components
 #' }
 #'
-#' @param node.shape A node shape of a Bayesian Network.
-#' Example :
+#' @param bayesianNetwork.width Bayesian Network width
+#'
+#' @param bayesianNetwork.height Bayesian Network height
+#'
+#' @param node.shape A node shape of a Bayesian Network
 #' \enumerate{
 #'   \item dot (default)
 #'   \item circle
@@ -55,6 +60,9 @@ global.bayesianNetwork <<- NULL
 #'   \item box
 #'   \item star
 #'   \item text
+#' }
+#'
+#' @param node.label.prefix Adds a prefix to the node label
 #'
 plot <- function(bayesianNetwork,
                  bayesianNetwork.title = "",
