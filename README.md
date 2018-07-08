@@ -1,6 +1,8 @@
-# bnviewer
-bnviewer - an R package for interactive visualization of Bayesian Networks
+<center><b>bnviewer</b></center>
+An R package for interactive visualization of Bayesian Networks
 ----------
+<img src="man/figures/coronary_star_hc.gif">
+
 
 **bnviewer** is an R package for interactive visualization of Bayesian Networks based on <a href="http://www.bnlearn.com/" target="_blank">bnlearn</a>, through <a href="https://datastorm-open.github.io/visNetwork/" target="_blank">visNetwork</a>. The bnviewer package reads various structure learning algorithms provided by the <a href="http://www.bnlearn.com/" target="_blank">bnlearn</a> package, such as:
 
