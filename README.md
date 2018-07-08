@@ -66,8 +66,7 @@ plot(bn.learn.hc,
      bayesianNetwork.layout = "layout_with_sugiyama",
      bayesianNetwork.title="Discrete Bayesian Network - Alarm",
      bayesianNetwork.subtitle = "Monitoring of emergency care patients",
-     bayesianNetwork.footer = "Fig. 1 - Layout with Sugiyama",
-     edges.dashes = FALSE
+     bayesianNetwork.footer = "Fig. 1 - Layout with Sugiyama"
 )
 ```
 ![](man/figures/alarm_sugiyama_hc.gif)
@@ -80,7 +79,6 @@ plot(bn.learn.hc,
      bayesianNetwork.title="Discrete Bayesian Network - Alarm",
      bayesianNetwork.subtitle = "Monitoring of emergency care patients",
      bayesianNetwork.footer = "Fig. 1 - Layout on grid",
-     edges.dashes = FALSE,
 
      node.colors = list(background = "#f4bafd",
                         border = "#2b7ce9",
@@ -99,7 +97,6 @@ plot(bn.learn.hc,
      bayesianNetwork.title="Discrete Bayesian Network - Alarm",
      bayesianNetwork.subtitle = "Monitoring of emergency care patients",
      bayesianNetwork.footer = "Fig. 1 - Layout in circle",
-     edges.dashes = FALSE,
 
      node.colors = list(background = "red",
                         border = "black",
