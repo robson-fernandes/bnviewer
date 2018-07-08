@@ -2,18 +2,21 @@
 % Please edit documentation in R/bnviewer.R
 \name{plot}
 \alias{plot}
-\title{Plot Bayesian Network}
+\title{Interactive Bayesian Network Plots}
 \usage{
-plot(bayesian.network, visNetwork.layout = "default",
-  visNetwork.width = "100\%", visNetwork.height = "500px",
-  visOptions.highlightNearest = TRUE, visOptions.nodesIdSelection = FALSE,
-  node.label.prefix = "", edges.smooth = TRUE, edges.dashes = TRUE)
+plot(bayesianNetwork, bayesianNetwork.title = "",
+  bayesianNetwork.subtitle = "", bayesianNetwork.footer = "",
+  bayesianNetwork.layout = "default", bayesianNetwork.width = "100\%",
+  bayesianNetwork.height = "500px", node.shape = c("dot"),
+  node.label.prefix = "", node.colors = list(), edges.smooth = TRUE,
+  edges.dashes = TRUE, options.highlightNearest = TRUE,
+  options.nodesIdSelection = FALSE)
 }
 \arguments{
-\item{bayesian.network}{A structure of a Bayesian Network
+\item{bayesianNetwork}{A structure of a Bayesian Network
 (Example : hill-climbing (HC)).}
 
-\item{visNetwork.layout}{A layout of a Bayesian Network.
+\item{bayesianNetwork.layout}{A layout of a Bayesian Network.
 Example :
 \enumerate{
   \item layout_on_sphere
@@ -32,5 +35,5 @@ Example :
 }}
 }
 \description{
-Plot Bayesian Network
+Interactive Bayesian Network Plots
 }

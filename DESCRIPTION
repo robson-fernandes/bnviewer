@@ -1,7 +1,8 @@
 Package: bnviewer
 Type: Package
-Title: Interactive Bayesian Network Visualization
+Title: Interactive Visualization of Bayesian Networks
 Version: 0.1.0
+Depends: R (>= 2.4.0), visNetwork, bnlearn, igraph
 Author: Robson Fernandes
 Maintainer: The package maintainer <robs.fernandes@outlook.com>
 Description: More about what it does (maybe more than one line)
@@ -10,3 +11,5 @@ License: What license is it under?
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 6.0.1
+Repository: CRAN
+Imports: visNetwork, bnlearn

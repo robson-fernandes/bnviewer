@@ -9,12 +9,17 @@
 #   Check Package:             'Cmd + Shift + E'
 #   Test Package:              'Cmd + Shift + T'
 
-if(!require(visNetwork)){
+
+if(!require("visNetwork")){
   install.packages("visNetwork")
-  require(visNetwork, quietly = TRUE)
+  require("visNetwork", quietly = TRUE)
 }
 
-#' Plot Bayesian Network
+
+global.bayesianNetwork <<- NULL
+
+
+#' Interactive Bayesian Network Plots
 #'
 #' @param bayesianNetwork A structure of a Bayesian Network
 #' (Example : hill-climbing (HC)).
@@ -61,6 +66,7 @@ plot <- function(bayesianNetwork,
 
                  node.shape = c("dot"),
                  node.label.prefix = "",
+                 node.colors = list(),
 
                  edges.smooth = TRUE,
                  edges.dashes = TRUE,
@@ -98,6 +104,10 @@ plot <- function(bayesianNetwork,
                submain = bayesianNetwork.subtitle,
                footer = bayesianNetwork.footer)
 
+    if (length(node.colors) > 0){
+      vis.network = visNetwork::visNodes(vis.network, color = node.colors)
+    }
+
     vis.network = visNetwork::visEdges(vis.network, arrows = "to")
     vis.network = visNetwork::visOptions(vis.network, highlightNearest = options.highlightNearest,
                  nodesIdSelection = options.nodesIdSelection)
@@ -111,4 +121,20 @@ plot <- function(bayesianNetwork,
 
   }
 
+}
+
+export <- function(bayesianNetwork, type = "png", name = "network")
+{
+  visNetwork::visExport(bayesianNetwork, type = type, name = name)
+}
+
+#' Save Bayesian Network into HTML file.
+#'
+#' @param bayesianNetwork A structure of a Bayesian Network
+#' (Example : hill-climbing (HC)).
+#' @param file Name of file. (Example : bayesianNetwork.html).
+#'
+save <- function(bayesianNetwork, file = "bayesianNetwork.html")
+{
+  visNetwork::visSave(bayesianNetwork, file = file)
 }

@@ -1,5 +1,5 @@
 ---
-title: "Interactive Bayesian Network Visualization"
+title: "Interactive Visualization of Bayesian Networks"
 output: html_document
 ---
 
@@ -26,6 +26,7 @@ plot(bn.learn.hc,
      bayesianNetwork.subtitle = "Example anywhere", 
      bayesianNetwork.footer = "Fig. 1 - Gaussian Bayesian Network",
      edges.dashes = FALSE)
+
 
 ```
 
