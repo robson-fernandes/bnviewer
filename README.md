@@ -82,7 +82,8 @@ plot(bn.learn.hc,
 
      node.colors = list(background = "#f4bafd",
                         border = "#2b7ce9",
-                        highlight = "#97c2fc")
+                        highlight = list(background = "#97c2fc",
+                                        border = "#2b7ce9"))
 
 )
 ```
@@ -100,7 +101,8 @@ plot(bn.learn.hc,
 
      node.colors = list(background = "red",
                         border = "black",
-                        highlight = "black")
+                        highlight = list(background = "black",
+                                         border = "red"))
 
 )
 ```
