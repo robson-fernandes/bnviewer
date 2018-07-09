@@ -53,18 +53,19 @@ See more documentation here <a href="DOC.md">BNViewer Documentation</a>
 
 How to use
 ----------
+Import the bnlearn and bnviewer packages
 
 ``` r
 library(bnlearn)
 library(bnviewer)
 ```
-
+Import the desired dataset and apply a structure learning algorithm. Example (Hill-Climbing (HC)).
 ``` r
 data("alarm")
 bn.learn.hc = hc(alarm)
 ```
 
-
+Call the plot function of the bnviewer package with the desired parameters.
 ``` r
 plot(bn.learn.hc,
      bayesianNetwork.width = "100%",
@@ -76,6 +77,8 @@ plot(bn.learn.hc,
 )
 ```
 ![](man/figures/alarm_sugiyama_hc.gif)
+
+Example of Bayesian network visualization with custom nodes and grid layout.
 
 ``` r
 plot(bn.learn.hc,
@@ -95,6 +98,7 @@ plot(bn.learn.hc,
 ```
 ![](man/figures/alarm_grid_hc.gif)
 
+Example of Bayesian network visualization with custom nodes and circle layout.
 
 ``` r
 plot(bn.learn.hc,
