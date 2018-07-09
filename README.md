@@ -45,6 +45,12 @@ install.packages("devtools")
 devtools::install_github("robson-fernandes/bnviewer")
 ```
 
+Documentation
+----------
+
+See more documentation here <a href="DOC.md">BNViewer Documentation</a>
+
+
 How to use
 ----------
 
@@ -107,8 +113,3 @@ plot(bn.learn.hc,
 )
 ```
 ![](man/figures/alarm_circle_hc.gif)
-
-Documentation
-----------
-
-See more documentation here <a href="DOC.md">BNViewer Documentation</a>
