@@ -2,16 +2,15 @@
 % Please edit documentation in R/bnviewer.R
 \name{save}
 \alias{save}
-\title{Save Bayesian Network into HTML file.}
+\title{Saves the Bayesian Network into HTML file}
 \usage{
 save(bayesianNetwork, file = "bayesianNetwork.html")
 }
 \arguments{
-\item{bayesianNetwork}{A structure of a Bayesian Network
-(Example : hill-climbing (HC)).}
+\item{bayesianNetwork}{A Bayesian Network structure. (Example : hill-climbing (HC)).}
 
-\item{file}{Name of file. (Example : bayesianNetwork.html).}
+\item{file}{File name. (Example : bayesianNetwork.html).}
 }
 \description{
-Save Bayesian Network into HTML file.
+Saves the Bayesian Network into HTML file
 }

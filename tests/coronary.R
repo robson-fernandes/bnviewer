@@ -11,9 +11,7 @@ plot(bn.learn.hc,
      bayesianNetwork.title="Discrete Bayesian Network - Coronary",
      bayesianNetwork.subtitle = "Coronary heart disease data set",
      bayesianNetwork.footer = "Fig. 1 - Layout on grid",
-
-     edges.dashes = FALSE,
-
+     edges.smooth = TRUE,
      node.colors = list(background = "#f4bafd",
                         border = "#2b7ce9",
                         highlight = "#97c2fc")
@@ -27,7 +25,11 @@ plot(bn.learn.hc,
      bayesianNetwork.title="Discrete Bayesian Network - Coronary",
      bayesianNetwork.subtitle = "Coronary heart disease data set",
      bayesianNetwork.footer = "Fig. 1 - Layout as star",
-     edges.dashes = FALSE
+     edges.smooth = TRUE,
+     node.colors = list(background = "#f4bafd",
+                        border = "#2b7ce9",
+                        highlight = list(background = "#97c2fc",
+                                         border = "#2b7ce9"))
 
 )
 
@@ -43,6 +45,7 @@ plot(bn.learn.hc,
 
      node.colors = list(background = "red",
                         border = "black",
-                        highlight = "black")
+                        highlight = list(background = "black",
+                                         border = "red"))
 
 )

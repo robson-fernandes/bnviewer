@@ -21,12 +21,13 @@ plot(bn.learn.hc,
      bayesianNetwork.layout = "layout_on_grid",
      bayesianNetwork.title="Discrete Bayesian Network - Alarm",
      bayesianNetwork.subtitle = "Monitoring of emergency care patients",
-     bayesianNetwork.footer = "Fig. 1 - Layout on grid",
+     bayesianNetwork.footer = "Fig. 2 - Layout on grid",
      edges.dashes = FALSE,
 
      node.colors = list(background = "#f4bafd",
                         border = "#2b7ce9",
-                        highlight = "#97c2fc")
+                        highlight = list(background = "#97c2fc",
+                                        border = "#2b7ce9"))
 
 )
 
@@ -36,11 +37,12 @@ plot(bn.learn.hc,
      bayesianNetwork.layout = "layout_in_circle",
      bayesianNetwork.title="Discrete Bayesian Network - Alarm",
      bayesianNetwork.subtitle = "Monitoring of emergency care patients",
-     bayesianNetwork.footer = "Fig. 1 - Layout in circle",
+     bayesianNetwork.footer = "Fig. 3 - Layout in circle",
      edges.dashes = FALSE,
 
      node.colors = list(background = "red",
                         border = "black",
-                        highlight = "black")
+                        highlight = list(background = "black",
+                                         border = "red"))
 
 )

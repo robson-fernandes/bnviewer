@@ -9,20 +9,19 @@ plot(bayesianNetwork, bayesianNetwork.title = "",
   bayesianNetwork.layout = "default", bayesianNetwork.width = "100\%",
   bayesianNetwork.height = "500px", node.shape = c("dot"),
   node.label.prefix = "", node.colors = list(), edges.smooth = TRUE,
-  edges.dashes = TRUE, options.highlightNearest = TRUE,
+  edges.dashes = FALSE, options.highlightNearest = TRUE,
   options.nodesIdSelection = FALSE)
 }
 \arguments{
-\item{bayesianNetwork}{A structure of a Bayesian Network
-(Example : hill-climbing (HC)).}
+\item{bayesianNetwork}{A Bayesian Network structure. (Example : hill-climbing (HC)).}
 
-\item{bayesianNetwork.title}{Bayesian Network title}
+\item{bayesianNetwork.title}{: String. Bayesian Network title}
 
-\item{bayesianNetwork.subtitle}{Bayesian Network subtitle}
+\item{bayesianNetwork.subtitle}{: String. Bayesian Network subtitle}
 
-\item{bayesianNetwork.footer}{Bayesian Network footer}
+\item{bayesianNetwork.footer}{: String. Bayesian Network footer}
 
-\item{bayesianNetwork.layout}{A layout of a Bayesian Network
+\item{bayesianNetwork.layout}{: String. A layout of a Bayesian Network
 \enumerate{
   \item layout_on_sphere
   \item layout_on_grid
@@ -39,11 +38,11 @@ plot(bayesianNetwork, bayesianNetwork.title = "",
   \item layout_components
 }}
 
-\item{bayesianNetwork.width}{Bayesian Network width}
+\item{bayesianNetwork.width}{: String. Bayesian Network width}
 
-\item{bayesianNetwork.height}{Bayesian Network height}
+\item{bayesianNetwork.height}{: String. Bayesian Network height}
 
-\item{node.shape}{A node shape of a Bayesian Network
+\item{node.shape}{: String. A node shape of a Bayesian Network
 \enumerate{
   \item dot (default)
   \item circle
@@ -57,8 +56,56 @@ plot(bayesianNetwork, bayesianNetwork.title = "",
   \item text
 }}
 
-\item{node.label.prefix}{Adds a prefix to the node label}
+\item{node.label.prefix}{: String. Adds a prefix to the node label}
+
+\item{node.colors}{: String | named list. Color for the node. Can be 'rgba(120,32,14,1)', '#97C2FC'
+(hexa notation on 7 char without transparency) or 'red'.
+Can be just one color, or a list with several elements:
+
+\enumerate{
+  \item "background" : String. Default to '#97C2FC'. Background color for the node.
+  \item "border" : String. Default to '#2B7CE9'. Border color for the node.
+  \item "highlight" : String | named list, Color of the node when selected.
+  \enumerate{
+     \item "background" : String. Default to '#97C2FC'. Background color for the node when selected.
+     \item "border" : String. Default to '#2B7CE9'. Border color for the node when selected.
+  }
+}}
+
+\item{edges.smooth}{: Boolean. When true, the edge is drawn as a dynamic quadratic bezier curve.}
+
+\item{edges.dashes}{: Array or Boolean. Default to false. When true, the edge will be drawn as a dashed line.}
+
+\item{options.highlightNearest}{: Boolean. Default to true. Highlight nearest when clicking a node.}
+
+\item{options.nodesIdSelection}{: Boolean. Default to false. Add an id node selection creating an HTML select element.}
 }
 \description{
 Interactive Bayesian Network Plots
+}
+\examples{
+
+library(bnlearn)
+library(bnviewer)
+
+data(coronary)
+bn.learn.hc = hc(coronary)
+
+plot(bn.learn.hc,
+     bayesianNetwork.width = "100\%",
+     bayesianNetwork.height = "80vh",
+     bayesianNetwork.layout = "layout_as_star",
+     bayesianNetwork.title="Discrete Bayesian Network - Coronary",
+     bayesianNetwork.subtitle = "Coronary heart disease data set",
+     bayesianNetwork.footer = "Fig. 1 - Layout as star",
+     edges.smooth = TRUE,
+     node.colors = list(background = "#f4bafd",
+                        border = "#2b7ce9",
+                        highlight = list(background = "#97c2fc",
+                                         border = "#2b7ce9"))
+)
+
+}
+\references{
+See online documentation \url{https://github.com/robson-fernandes/bnviewer/}
 }
