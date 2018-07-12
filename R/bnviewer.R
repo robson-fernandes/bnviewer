@@ -12,7 +12,7 @@ if(!require("visNetwork")){
 }
 
 
-#' Interactive Bayesian Network Plots
+#' Interactive Bayesian Network Viewer
 #'
 #' @param bayesianNetwork A Bayesian Network structure. (Example : hill-climbing (HC)).
 #'
@@ -91,7 +91,7 @@ if(!require("visNetwork")){
 #' data(coronary)
 #' bn.learn.hc = hc(coronary)
 #'
-#' plot(bn.learn.hc,
+#' viewer(bn.learn.hc,
 #'      bayesianNetwork.width = "100%",
 #'      bayesianNetwork.height = "80vh",
 #'      bayesianNetwork.layout = "layout_as_star",
@@ -105,7 +105,7 @@ if(!require("visNetwork")){
 #'                                          border = "#2b7ce9"))
 #' )
 #'
-plot <- function(bayesianNetwork,
+viewer <- function(bayesianNetwork,
                  bayesianNetwork.title = "",
                  bayesianNetwork.subtitle = "",
                  bayesianNetwork.footer = "",
