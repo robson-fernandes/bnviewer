@@ -48,7 +48,7 @@ devtools::install_github("robson-fernandes/bnviewer")
 Documentation
 ----------
 
-See more documentation here <a href="DOC.md">BNViewer Documentation</a>
+See more documentation here <a href="man/DOC.md">BNViewer Documentation</a>
 
 
 How to use

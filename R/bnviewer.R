@@ -6,12 +6,6 @@
 #   Test Package:              'Cmd + Shift + T'
 
 
-if(!require("visNetwork")){
-  install.packages("visNetwork")
-  require("visNetwork", quietly = TRUE)
-}
-
-
 #' Interactive Bayesian Network Viewer
 #'
 #' @param bayesianNetwork A Bayesian Network structure. (Example : hill-climbing (HC)).
@@ -82,6 +76,8 @@ if(!require("visNetwork")){
 #' @param options.nodesIdSelection : Boolean. Default to false. Add an id node selection creating an HTML select element.
 #'
 #' @references See online documentation \url{https://github.com/robson-fernandes/bnviewer/}
+#'
+#' @import visNetwork, bnlearn
 #'
 #' @examples
 #'
