@@ -5,7 +5,7 @@ data("alarm")
 bn.learn.hc = hc(alarm)
 
 
-plot(bn.learn.hc,
+viewer(bn.learn.hc,
      bayesianNetwork.width = "100%",
      bayesianNetwork.height = "80vh",
      bayesianNetwork.layout = "layout_with_sugiyama",
@@ -15,7 +15,7 @@ plot(bn.learn.hc,
      edges.dashes = FALSE
 )
 
-plot(bn.learn.hc,
+viewer(bn.learn.hc,
      bayesianNetwork.width = "100%",
      bayesianNetwork.height = "80vh",
      bayesianNetwork.layout = "layout_on_grid",
@@ -31,7 +31,7 @@ plot(bn.learn.hc,
 
 )
 
-plot(bn.learn.hc,
+viewer(bn.learn.hc,
      bayesianNetwork.width = "100%",
      bayesianNetwork.height = "80vh",
      bayesianNetwork.layout = "layout_in_circle",

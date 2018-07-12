@@ -4,19 +4,19 @@
 
 <div>
 
-<table width="100%" summary="page for plot {bnviewer}"><tbody><tr><td>plot {bnviewer}</td><td style="text-align: right;">R Documentation</td></tr></tbody></table>
+<table width="100%" summary="page for viewer {bnviewer}"><tbody><tr><td>viewer {bnviewer}</td><td style="text-align: right;">R Documentation</td></tr></tbody></table>
 
-<h2>Interactive Bayesian Network Plots</h2>
+<h2>Interactive Bayesian Network Viewer</h2>
 
 <h3>Description</h3>
 
-<p>Interactive Bayesian Network Plots
+<p>Interactive Bayesian Network Viewer
 </p>
 
 
 <h3>Usage</h3>
 
-<pre>plot(bayesianNetwork, bayesianNetwork.title = "",
+<pre>viewer(bayesianNetwork, bayesianNetwork.title = "",
   bayesianNetwork.subtitle = "", bayesianNetwork.footer = "",
   bayesianNetwork.layout = "default", bayesianNetwork.width = "100%",
   bayesianNetwork.height = "500px", node.shape = c("dot"),
@@ -195,7 +195,7 @@ library(bnviewer)
 data(coronary)
 bn.learn.hc = hc(coronary)
 
-plot(bn.learn.hc,
+viewer(bn.learn.hc,
      bayesianNetwork.width = "100%",
      bayesianNetwork.height = "80vh",
      bayesianNetwork.layout = "layout_as_star",

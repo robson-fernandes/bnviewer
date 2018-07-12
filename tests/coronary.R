@@ -4,7 +4,7 @@ library(bnviewer)
 data(coronary)
 bn.learn.hc = hc(coronary)
 
-plot(bn.learn.hc,
+viewer(bn.learn.hc,
      bayesianNetwork.width = "100%",
      bayesianNetwork.height = "80vh",
      bayesianNetwork.layout = "layout_on_grid",
@@ -18,7 +18,7 @@ plot(bn.learn.hc,
 
     )
 
-plot(bn.learn.hc,
+viewer(bn.learn.hc,
      bayesianNetwork.width = "100%",
      bayesianNetwork.height = "80vh",
      bayesianNetwork.layout = "layout_as_star",
@@ -34,7 +34,7 @@ plot(bn.learn.hc,
 )
 
 
-plot(bn.learn.hc,
+viewer(bn.learn.hc,
      bayesianNetwork.width = "100%",
      bayesianNetwork.height = "80vh",
      bayesianNetwork.layout = "layout_in_circle",

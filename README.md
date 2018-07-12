@@ -65,9 +65,9 @@ data("alarm")
 bn.learn.hc = hc(alarm)
 ```
 
-Call the plot function of the bnviewer package with the desired parameters.
+Call the viewer function of the bnviewer package with the desired parameters.
 ``` r
-plot(bn.learn.hc,
+viewer(bn.learn.hc,
      bayesianNetwork.width = "100%",
      bayesianNetwork.height = "80vh",
      bayesianNetwork.layout = "layout_with_sugiyama",
@@ -81,7 +81,7 @@ plot(bn.learn.hc,
 Example of Bayesian network visualization with custom nodes and grid layout.
 
 ``` r
-plot(bn.learn.hc,
+viewer(bn.learn.hc,
      bayesianNetwork.width = "100%",
      bayesianNetwork.height = "80vh",
      bayesianNetwork.layout = "layout_on_grid",
@@ -101,7 +101,7 @@ plot(bn.learn.hc,
 Example of Bayesian network visualization with custom nodes and circle layout.
 
 ``` r
-plot(bn.learn.hc,
+viewer(bn.learn.hc,
      bayesianNetwork.width = "100%",
      bayesianNetwork.height = "80vh",
      bayesianNetwork.layout = "layout_in_circle",
