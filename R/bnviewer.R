@@ -5,15 +5,6 @@
 #   Check Package:             'Cmd + Shift + E'
 #   Test Package:              'Cmd + Shift + T'
 
-if(!require("visNetwork")){
-      install.packages("visNetwork")
-      require("visNetwork", quietly = TRUE)
-}
-
-if(!require("bnlearn")){
-  install.packages("bnlearn")
-  require("bnlearn")
-}
 
 #' Interactive Bayesian Network Viewer
 #'
@@ -86,6 +77,9 @@ if(!require("bnlearn")){
 #'
 #' @references See online documentation \url{https://github.com/robson-fernandes/bnviewer/}
 #'
+#' @importFrom  methods is
+#'
+#' @export
 #'
 #' @examples
 #'
@@ -109,6 +103,7 @@ if(!require("bnlearn")){
 #'                                          border = "#2b7ce9"))
 #' )
 #'
+#'
 viewer <- function(bayesianNetwork,
                  bayesianNetwork.title = "",
                  bayesianNetwork.subtitle = "",
@@ -129,10 +124,14 @@ viewer <- function(bayesianNetwork,
 
                  ){
 
+  #BNLearn Class
+  BNLearnClass =  bnlearn::.__C__bn
+
   #BN.Learn Object
   if ("learning"  %in% names(bayesianNetwork) &
       "nodes"  %in% names(bayesianNetwork) &
-      "arcs"  %in% names(bayesianNetwork))
+      "arcs"  %in% names(bayesianNetwork) &
+      is(bayesianNetwork,BNLearnClass))
   {
 
     nodes = names(bayesianNetwork$nodes)
@@ -178,7 +177,10 @@ viewer <- function(bayesianNetwork,
 #' Saves the Bayesian Network into HTML file
 #'
 #' @param bayesianNetwork A Bayesian Network structure. (Example : hill-climbing (HC)).
+#'
 #' @param file File name. (Example : bayesianNetwork.html).
+#'
+#' @export
 #'
 save <- function(bayesianNetwork, file = "bayesianNetwork.html")
 {

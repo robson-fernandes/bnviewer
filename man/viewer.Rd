@@ -105,6 +105,7 @@ viewer(bn.learn.hc,
                                          border = "#2b7ce9"))
 )
 
+
 }
 \references{
 See online documentation \url{https://github.com/robson-fernandes/bnviewer/}
