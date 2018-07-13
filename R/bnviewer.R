@@ -5,6 +5,15 @@
 #   Check Package:             'Cmd + Shift + E'
 #   Test Package:              'Cmd + Shift + T'
 
+if(!require("visNetwork")){
+      install.packages("visNetwork")
+      require("visNetwork", quietly = TRUE)
+}
+
+if(!require("bnlearn")){
+  install.packages("bnlearn")
+  require("bnlearn")
+}
 
 #' Interactive Bayesian Network Viewer
 #'
@@ -77,7 +86,6 @@
 #'
 #' @references See online documentation \url{https://github.com/robson-fernandes/bnviewer/}
 #'
-#' @import visNetwork, bnlearn
 #'
 #' @examples
 #'
