@@ -182,7 +182,7 @@ viewer <- function(bayesianNetwork,
 #'
 #' @export
 #'
-save <- function(bayesianNetwork, file = "bayesianNetwork.html")
+save <- function(bayesianNetwork, file)
 {
   visNetwork::visSave(bayesianNetwork, file = file)
 }

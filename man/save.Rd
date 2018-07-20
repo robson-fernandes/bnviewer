@@ -4,7 +4,7 @@
 \alias{save}
 \title{Saves the Bayesian Network into HTML file}
 \usage{
-save(bayesianNetwork, file = "bayesianNetwork.html")
+save(bayesianNetwork, file)
 }
 \arguments{
 \item{bayesianNetwork}{A Bayesian Network structure. (Example : hill-climbing (HC)).}
