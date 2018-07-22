@@ -5,7 +5,7 @@ data("alarm")
 bn.learn.hc = hc(alarm)
 
 
-viewer(bn.learn.hc,
+bn.viewer.hc.layout_with_sugiyama = viewer(bn.learn.hc,
      bayesianNetwork.width = "100%",
      bayesianNetwork.height = "80vh",
      bayesianNetwork.layout = "layout_with_sugiyama",
@@ -15,7 +15,10 @@ viewer(bn.learn.hc,
      edges.dashes = FALSE
 )
 
-viewer(bn.learn.hc,
+# Layout With Sugiyama
+bn.viewer.hc.layout_with_sugiyama
+
+bn.viewer.hc.layout_on_grid = viewer(bn.learn.hc,
      bayesianNetwork.width = "100%",
      bayesianNetwork.height = "80vh",
      bayesianNetwork.layout = "layout_on_grid",
@@ -31,7 +34,10 @@ viewer(bn.learn.hc,
 
 )
 
-viewer(bn.learn.hc,
+# Layout on Grid
+bn.viewer.hc.layout_on_grid
+
+bn.viewer.hc.layout_in_circle = viewer(bn.learn.hc,
      bayesianNetwork.width = "100%",
      bayesianNetwork.height = "80vh",
      bayesianNetwork.layout = "layout_in_circle",
@@ -46,3 +52,12 @@ viewer(bn.learn.hc,
                                          border = "red"))
 
 )
+
+# Layout in Circle
+bn.viewer.hc.layout_in_circle
+
+
+#Save
+save(bn.viewer.hc.layout_with_sugiyama, "bayesianNetwork_layout_with_sugiyama.html")
+save(bn.viewer.hc.layout_on_grid, "bayesianNetwork_layout_on_grid.html")
+save(bn.viewer.hc.layout_in_circle, "bayesianNetwork_layout_in_circle.html")
