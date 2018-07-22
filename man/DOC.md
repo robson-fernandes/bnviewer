@@ -231,7 +231,7 @@ viewer(bn.learn.hc,
 
 <h3>Usage</h3>
 
-<pre>save(bayesianNetworkViewer, file)
+<pre>save(bayesianNetworkViewer, file, outputDir = NULL)
 </pre>
 
 
@@ -245,6 +245,12 @@ viewer(bn.learn.hc,
 <tr valign="top"><td><code>file</code></td>
 <td>
 <p>File name. (Example : bayesianNetwork.html).</p>
+</td></tr>
+<tr valign="top"><td><code>outputDir</code></td>
+<td>
+<p>Output directory name. Directory where Bayesian networks will be saved.
+By default they are saved to a temporary directory based on tempdir(),
+but it is possible to change the default directory.</p>
 </td></tr>
 </tbody></table>
 
@@ -272,10 +278,14 @@ bn.viewer.hc.layout_as_star = viewer(bn.learn.hc,
                                          border = "#2b7ce9"))
 )
 
+#Saves in temp directory
 save(bn.viewer.hc.layout_as_star, "bayesianNetwork_layout_as_star.html")
 
-</pre>
+#Saves in specific directory
+outputDir = "/home/robsonfernandes/Documentos/bayesianNetworks"
+save(bn.viewer.hc.layout_as_star, "bayesianNetwork_layout_as_star.html", outputDir = outputDir)
 
+</pre>
 
 <h3>References</h3>
 
