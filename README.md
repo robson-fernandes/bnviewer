@@ -1,6 +1,5 @@
-<b><h1 align="center" >BNViewer</h1></b>
-
 <p align="center">
+ <b><h1 align="center" >BNViewer</h1></b>
  <b style='font-size:40px;'>An R package for interactive visualization of Bayesian Networks</b>
 </p>
 
