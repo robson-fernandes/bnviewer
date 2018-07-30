@@ -47,12 +47,6 @@ install.packages("devtools")
 devtools::install_github("robson-fernandes/bnviewer")
 ```
 
-Documentation
-----------
-
-See more documentation here <a href="man/DOC.md">BNViewer Documentation</a>
-
-
 How to use
 ----------
 Import the bnlearn and bnviewer packages
@@ -120,7 +114,7 @@ viewer(bn.learn.hc,
 ```
 ![](man/figures/alarm_circle_hc.gif)
 
-<p><h1> Interactive Visualization of Bayesian Networks</h1><p>
+<p><h1> More Documentation </h1><p>
 
 <hr>
 
