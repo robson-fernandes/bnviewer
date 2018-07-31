@@ -1,3 +1,6 @@
+[![CRAN Status Badge](https://www.r-pkg.org/badges/version/bnviewer)](https://CRAN.R-project.org/package=bnviewer) 
+[![CRAN Downloads Badge](https://cranlogs.r-pkg.org/badges/bnviewer)](https://CRAN.R-project.org/package=bnviewer)
+
 <p align="center">
  <b style='font-size:40px;'>BNViewer</b>
 </p>
