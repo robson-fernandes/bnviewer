@@ -1,5 +1,6 @@
 [![CRAN Status Badge](https://www.r-pkg.org/badges/version/bnviewer)](https://CRAN.R-project.org/package=bnviewer) 
 [![CRAN Downloads Badge](https://cranlogs.r-pkg.org/badges/bnviewer)](https://CRAN.R-project.org/package=bnviewer)
+[![license](https://img.shields.io/github/license/mashape/apistatus.svg?maxAge=2592000)](https://github.com/robson-fernandes/bnviewer/blob/master/LICENSE)
 
 <p align="center">
  <b style='font-size:40px;'>BNViewer</b>
@@ -42,6 +43,13 @@
       
 Installation
 ------------
+
+
+You can install the stable version of **bnviewer** from CRAN:
+
+```r
+install.packages("bnviewer")
+```
 
 **bnviewer** is available for developers, install from GitHub.
 
