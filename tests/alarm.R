@@ -61,8 +61,3 @@ bn.viewer.hc.layout_in_circle
 save(bn.viewer.hc.layout_with_sugiyama, "bayesianNetwork_layout_with_sugiyama.html")
 save(bn.viewer.hc.layout_on_grid, "bayesianNetwork_layout_on_grid.html")
 save(bn.viewer.hc.layout_in_circle, "bayesianNetwork_layout_in_circle.html")
-
-#Saves in specific directory
-save(bn.viewer.hc.layout_with_sugiyama, "bayesianNetwork_layout_with_sugiyama.html", outputDir = "/home/robsonfernandes/Documentos/bayesianNetworks")
-save(bn.viewer.hc.layout_on_grid, "bayesianNetwork_layout_on_grid.html", outputDir = "/home/robsonfernandes/Documentos/bayesianNetworks")
-save(bn.viewer.hc.layout_in_circle, "bayesianNetwork_layout_in_circle.html", outputDir = "/home/robsonfernandes/Documentos/bayesianNetworks")
