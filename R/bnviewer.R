@@ -75,7 +75,7 @@
 #'
 #' @param options.nodesIdSelection : Boolean. Default to false. Add an id node selection creating an HTML select element.
 #'
-#' @references See online documentation \url{https://github.com/robson-fernandes/bnviewer/}
+#' @references See online documentation \url{http://robsonfernandes.net/bnviewer}
 #'
 #' @importFrom  methods is
 #'
@@ -312,7 +312,7 @@ strength.viewer <- function(bayesianNetwork.boot.strength = NULL,
 ){
 
 
-  avg.bayesianNetwork = averaged.network(bayesianNetwork.boot.strength,
+  avg.bayesianNetwork = bnlearn::averaged.network(bayesianNetwork.boot.strength,
                                          threshold = bayesianNetwork.arc.strength.threshold.min)
   bayesianNetwork = avg.bayesianNetwork
 
