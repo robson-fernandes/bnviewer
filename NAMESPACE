@@ -2,4 +2,5 @@
 
 export(save)
 export(viewer)
+export(strength.viewer)
 importFrom(methods,is)
