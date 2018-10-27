@@ -282,8 +282,8 @@ viewer <- function(bayesianNetwork,
 #'                 bayesianNetwork.footer = "Fig. 1 - Layout in Circle"
 #' )
 #'
-strength.viewer <- function(bayesianNetwork.boot.strength = NULL,
-                            bayesianNetwork.arc.strength.threshold.min = 0.5,
+strength.viewer <- function(bayesianNetwork,
+                            bayesianNetwork.boot.strength = NULL,
                             bayesianNetwork.arc.strength.threshold.expression.color = NULL,
                             bayesianNetwork.arc.strength.threshold.color = NULL,
 
@@ -291,6 +291,12 @@ strength.viewer <- function(bayesianNetwork.boot.strength = NULL,
                             bayesianNetwork.arc.strength.label.prefix = "",
                             bayesianNetwork.arc.strength.label.color = NULL,
                             bayesianNetwork.arc.strength.tooltip = FALSE,
+
+                            bayesianNetwork.edge.scale.min = 1,
+                            bayesianNetwork.edge.scale.max = 5,
+
+                            bayesianNetwork.edge.scale.label.min = 14,
+                            bayesianNetwork.edge.scale.label.max = 14,
 
                             bayesianNetwork.title = "",
                             bayesianNetwork.subtitle = "",
@@ -310,11 +316,6 @@ strength.viewer <- function(bayesianNetwork.boot.strength = NULL,
                             options.nodesIdSelection = FALSE
 
 ){
-
-
-  avg.bayesianNetwork = bnlearn::averaged.network(bayesianNetwork.boot.strength,
-                                         threshold = bayesianNetwork.arc.strength.threshold.min)
-  bayesianNetwork = avg.bayesianNetwork
 
   #BNLearn Class
   BNLearnClass =  bnlearn::.__C__bn
@@ -416,7 +417,11 @@ strength.viewer <- function(bayesianNetwork.boot.strength = NULL,
       vis.network = visNetwork::visNodes(vis.network, color = node.colors)
     }
 
-    vis.network = visNetwork::visEdges(vis.network, arrows = "to", scaling=list(max=5))
+    vis.network = visNetwork::visEdges(vis.network, arrows = "to", scaling=list(min=bayesianNetwork.edge.scale.min,
+                                                                                max=bayesianNetwork.edge.scale.max,
+                                                                                label= list(enabled=TRUE,
+                                                                                            min=bayesianNetwork.edge.scale.label.min,
+                                                                                            max=bayesianNetwork.edge.scale.label.max)))
     vis.network = visNetwork::visOptions(vis.network, highlightNearest = options.highlightNearest,
                                          nodesIdSelection = options.nodesIdSelection)
 
