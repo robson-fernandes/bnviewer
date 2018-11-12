@@ -265,8 +265,8 @@ viewer <- function(bayesianNetwork,
 #'                 bayesianNetwork.boot.strength,
 #'
 #'                 bayesianNetwork.arc.strength.threshold.min = 0.88,
-#'                 bayesianNetwork.arc.strength.threshold.expression.color = "@threshold >= 0.98 & @threshold <= 1",
-#'                 bayesianNetwork.arc.strength.threshold.color = "red",
+#'                 bayesianNetwork.arc.strength.threshold.expression = "@threshold >= 0.98 & @threshold <= 1",
+#'                 bayesianNetwork.arc.strength.threshold.expression.color = "red",
 #'
 #'                 bayesianNetwork.arc.strength.label = TRUE,
 #'                 bayesianNetwork.arc.strength.label.prefix = "strength :",
@@ -283,9 +283,11 @@ viewer <- function(bayesianNetwork,
 #' )
 #'
 strength.viewer <- function(bayesianNetwork,
+                            bayesianNetwork.background = NULL,
                             bayesianNetwork.boot.strength = NULL,
+                            bayesianNetwork.arc.strength.threshold.expression = NULL,
                             bayesianNetwork.arc.strength.threshold.expression.color = NULL,
-                            bayesianNetwork.arc.strength.threshold.color = NULL,
+                            bayesianNetwork.arc.strength.threshold.alternative.color = NULL,
 
                             bayesianNetwork.arc.strength.label = FALSE,
                             bayesianNetwork.arc.strength.label.prefix = "",
@@ -308,9 +310,11 @@ strength.viewer <- function(bayesianNetwork,
                             node.shape = c("dot"),
                             node.label.prefix = "",
                             node.colors = list(),
+                            node.font = list(),
 
                             edges.smooth = TRUE,
                             edges.dashes = FALSE,
+                            edges.colors = list(),
 
                             options.highlightNearest = TRUE,
                             options.nodesIdSelection = FALSE
@@ -361,7 +365,7 @@ strength.viewer <- function(bayesianNetwork,
                         value=strength.collection)
 
 
-    if (!is.null(bayesianNetwork.arc.strength.threshold.expression.color)){
+    if (!is.null(bayesianNetwork.arc.strength.threshold.expression)){
 
       #Color Interval
       for (i in seq_along(from.collection)){
@@ -371,16 +375,16 @@ strength.viewer <- function(bayesianNetwork,
 
         strength = bayesianNetwork.boot.strength[(bayesianNetwork.boot.strength$from == from & bayesianNetwork.boot.strength$to == to),"strength"]
 
-        expression = bayesianNetwork.arc.strength.threshold.expression.color
+        expression = bayesianNetwork.arc.strength.threshold.expression
         expression.strength = gsub("@threshold", strength, expression)
 
         expression.strength.logic = eval(parse(text = expression.strength))
 
         if (expression.strength.logic){
-          strength.collection.color <- c(strength.collection.color, bayesianNetwork.arc.strength.threshold.color)
+          strength.collection.color <- c(strength.collection.color, bayesianNetwork.arc.strength.threshold.expression.color)
         }
         else{
-          strength.collection.color <- c(strength.collection.color, "#2b7ce9")
+          strength.collection.color <- c(strength.collection.color, bayesianNetwork.arc.strength.threshold.alternative.color)
         }
 
       }
@@ -411,13 +415,23 @@ strength.viewer <- function(bayesianNetwork,
                                          height = bayesianNetwork.height,
                                          main = bayesianNetwork.title,
                                          submain = bayesianNetwork.subtitle,
-                                         footer = bayesianNetwork.footer)
+                                         footer = bayesianNetwork.footer,
+                                         background = bayesianNetwork.background)
 
     if (length(node.colors) > 0){
-      vis.network = visNetwork::visNodes(vis.network, color = node.colors)
+
+      if (length(node.font) > 0){
+        vis.network = visNetwork::visNodes(vis.network, color = node.colors, font= node.font)
+      }
+      else{
+        vis.network = visNetwork::visNodes(vis.network, color = node.colors)
+      }
+
     }
 
-    vis.network = visNetwork::visEdges(vis.network, arrows = "to", scaling=list(min=bayesianNetwork.edge.scale.min,
+    vis.network = visNetwork::visEdges(vis.network, arrows = "to",
+                                       color=edges.colors,
+                                       scaling=list(min=bayesianNetwork.edge.scale.min,
                                                                                 max=bayesianNetwork.edge.scale.max,
                                                                                 label= list(enabled=TRUE,
                                                                                             min=bayesianNetwork.edge.scale.label.min,
