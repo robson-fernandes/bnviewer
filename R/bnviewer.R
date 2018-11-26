@@ -258,28 +258,47 @@ viewer <- function(bayesianNetwork,
 #' library(bnlearn)
 #' library(bnviewer)
 #'
-#' data(coronary)
-#' bayesianNetwork.boot.strength = boot.strength(coronary, R = 50, algorithm = "hc")
+#' bayesianNetwork.boot.strength = boot.strength(alarm, R = 20, algorithm = "hc")
+#'
+#' avg.bayesianNetwork = averaged.network(bayesianNetwork.boot.strength, threshold = 0.2)
 #'
 #' strength.viewer(
-#'                 bayesianNetwork.boot.strength,
+#'   avg.bayesianNetwork,
+#'   bayesianNetwork.boot.strength,
+#'   bayesianNetwork.background = "white",
+#'   bayesianNetwork.arc.strength.threshold.expression = c("@threshold > 0 & @threshold < 0.5",
+#'                                                         "@threshold >= 0.5 & @threshold < 0.6",
+#'                                                         "@threshold >= 0.6 & @threshold <= 1"),
 #'
-#'                 bayesianNetwork.arc.strength.threshold.min = 0.88,
-#'                 bayesianNetwork.arc.strength.threshold.expression = "@threshold >= 0.98 & @threshold <= 1",
-#'                 bayesianNetwork.arc.strength.threshold.expression.color = "red",
+#'   bayesianNetwork.arc.strength.threshold.expression.color  = c("red", "yellow", "green"),
+#'   bayesianNetwork.arc.strength.threshold.alternative.color =  "white",
 #'
-#'                 bayesianNetwork.arc.strength.label = TRUE,
-#'                 bayesianNetwork.arc.strength.label.prefix = "strength :",
-#'                 bayesianNetwork.arc.strength.label.color = "black",
+#'   bayesianNetwork.arc.strength.label = TRUE,
+#'   bayesianNetwork.arc.strength.label.prefix = "",
+#'   bayesianNetwork.arc.strength.label.color = "black",
 #'
-#'                 bayesianNetwork.arc.strength.tooltip = TRUE,
+#'   bayesianNetwork.arc.strength.tooltip = TRUE,
 #'
-#'                 bayesianNetwork.width = "100%",
-#'                 bayesianNetwork.height = "80vh",
-#'                 bayesianNetwork.layout = "layout_in_circle",
-#'                 bayesianNetwork.title="Bayesian Network Strength Analysis - Coronary",
-#'                 bayesianNetwork.subtitle = "Coronary heart disease",
-#'                 bayesianNetwork.footer = "Fig. 1 - Layout in Circle"
+#'   bayesianNetwork.edge.scale.min = 1,
+#'   bayesianNetwork.edge.scale.max = 3,
+#'
+#'   bayesianNetwork.edge.scale.label.min = 14,
+#'   bayesianNetwork.edge.scale.label.max = 14,
+#'
+#'   bayesianNetwork.width = "100%",
+#'   bayesianNetwork.height = "800px",
+#'   bayesianNetwork.layout = "layout_with_sugiyama",
+#'   node.colors = list(background = "#97c2fc",
+#'                      border = "#2b7ce9",
+#'                      highlight = list(background = "#e91eba",
+#'                                       border = "#2b7ce9")),
+#'
+#'   node.font = list(color = "black", face="Arial"),
+#'   edges.dashes = FALSE,
+#'
+#'   bayesianNetwork.title="Bayesian Network Strength Analysis - Alarm",
+#'   bayesianNetwork.subtitle = "The Alarm Monitoring System",
+#'   bayesianNetwork.footer = "Fig. 1 - Layout with Sugiyama"
 #' )
 #'
 strength.viewer <- function(bayesianNetwork,
@@ -368,27 +387,40 @@ strength.viewer <- function(bayesianNetwork,
     if (!is.null(bayesianNetwork.arc.strength.threshold.expression)){
 
       #Color Interval
-      for (i in seq_along(from.collection)){
+      for (j in seq_along(from.collection)){
 
-        from = from.collection[i]
-        to = to.collection[i]
+        from = from.collection[j]
+        to = to.collection[j]
 
         strength = bayesianNetwork.boot.strength[(bayesianNetwork.boot.strength$from == from & bayesianNetwork.boot.strength$to == to),"strength"]
 
-        expression = bayesianNetwork.arc.strength.threshold.expression
-        expression.strength = gsub("@threshold", strength, expression)
 
-        expression.strength.logic = eval(parse(text = expression.strength))
+        expression.color.detect = NULL
 
-        if (expression.strength.logic){
-          strength.collection.color <- c(strength.collection.color, bayesianNetwork.arc.strength.threshold.expression.color)
+        for (k in seq_along(bayesianNetwork.arc.strength.threshold.expression)){
+
+          expression = bayesianNetwork.arc.strength.threshold.expression[k]
+          expression.color = bayesianNetwork.arc.strength.threshold.expression.color[k]
+
+          expression.strength = gsub("@threshold", strength, expression)
+
+          expression.strength.logic = eval(parse(text = expression.strength))
+
+          if (expression.strength.logic){
+            expression.color.detect = expression.color
+
+          }
+
+        }
+
+        if (!is.null(expression.color.detect)){
+          strength.collection.color <- c(strength.collection.color, expression.color.detect)
         }
         else{
           strength.collection.color <- c(strength.collection.color, bayesianNetwork.arc.strength.threshold.alternative.color)
         }
 
       }
-
       edges$color=strength.collection.color
     }
 

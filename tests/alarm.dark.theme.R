@@ -1,17 +1,20 @@
 library(bnlearn)
 library(bnviewer)
 
-bayesianNetwork.boot.strength = boot.strength(alarm, R = 50, algorithm = "hc")
 
-avg.bayesianNetwork = averaged.network(bayesianNetwork.boot.strength, threshold = 0.3)
+bayesianNetwork.boot.strength = boot.strength(alarm, R = 20, algorithm = "hc")
+
+avg.bayesianNetwork = averaged.network(bayesianNetwork.boot.strength, threshold = 0.2)
 
 strength.viewer(
   avg.bayesianNetwork,
   bayesianNetwork.boot.strength,
   bayesianNetwork.background = "black",
-  bayesianNetwork.arc.strength.threshold.expression = "@threshold >= 0.95 & @threshold <= 1",
-  bayesianNetwork.arc.strength.threshold.expression.color  = "#ea80fc",
-  bayesianNetwork.arc.strength.threshold.alternative.color =  "#9acbfa",
+  bayesianNetwork.arc.strength.threshold.expression = c("@threshold > 0 & @threshold < 0.5",
+                                                        "@threshold >= 0.5 & @threshold < 0.6",
+                                                        "@threshold >= 0.6 & @threshold <= 1"),
+  bayesianNetwork.arc.strength.threshold.expression.color  = c("red", "yellow", "blue"),
+  bayesianNetwork.arc.strength.threshold.alternative.color =  "white",
 
   bayesianNetwork.arc.strength.label = TRUE,
   bayesianNetwork.arc.strength.label.prefix = "",
