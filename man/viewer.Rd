@@ -108,5 +108,5 @@ viewer(bn.learn.hc,
 
 }
 \references{
-See online documentation \url{https://github.com/robson-fernandes/bnviewer/}
+See online documentation \url{http://robsonfernandes.net/bnviewer}
 }
