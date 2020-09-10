@@ -5,7 +5,7 @@ data("alarm")
 bayesianNetwork.structure.alarm = hc(alarm)
 
 viewer(bayesianNetwork.structure.alarm,
-       bayesianNetwork.enabled.interactive.mode = TRUE,
+       # bayesianNetwork.enabled.interactive.mode = TRUE,
        bayesianNetwork.width = "100%",
        bayesianNetwork.height = "100vh",
        bayesianNetwork.layout = "layout_in_circle",

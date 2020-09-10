@@ -36,7 +36,7 @@ strength.viewer(
   avg.bayesianNetwork,
   bayesianNetwork.strength,
   bayesianNetwork.background = "white",
-  bayesianNetwork.enabled.interactive.mode = TRUE,
+  # bayesianNetwork.enabled.interactive.mode = TRUE,
   bayesianNetwork.arc.strength.threshold.expression = c("@threshold > 0 & @threshold < 0.5",
                                                         "@threshold >= 0.5 & @threshold <= 0.8",
                                                         "@threshold > 0.8 & @threshold <= 1"),
