@@ -179,7 +179,7 @@
 #'
 strength.viewer <- function(bayesianNetwork,
                             bayesianNetwork.background = NULL,
-                            bayesianNetwork.boot.strength = NULL,
+                            bayesianNetwork.boot.strength,
                             bayesianNetwork.arc.strength.threshold.expression = NULL,
                             bayesianNetwork.arc.strength.threshold.expression.color = NULL,
                             bayesianNetwork.arc.strength.threshold.alternative.color = NULL,
@@ -262,6 +262,16 @@ strength.viewer <- function(bayesianNetwork,
     strength.collection = c()
     strength.tooltip.collection = c()
     strength.collection.color = c()
+
+    assertthat::assert_that(!missing(bayesianNetwork.boot.strength),
+                            msg = "Argument bayesianNetwork.boot.strength is missing.
+                            Specify a list object of class bn.
+                            See ?bnlearn::bn.strength for more detail")
+
+    assertthat::assert_that(!is.null(bayesianNetwork.boot.strength),
+                            msg = "Argument bayesianNetwork.boot.strength is NULL.
+                            Specify a list object of class bn.
+                            See ?bnlearn::bn.strength for more detail")
 
     for (i in seq_along(from.collection)){
 
