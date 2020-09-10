@@ -100,8 +100,7 @@ viewer(bn.learn.hc,
 	
 )
 ```
-
-<img src="https://miro.medium.com/max/875/0*9qPr-9cUHoYnMYxs?raw=true">
+-![Bayesian Network](https://miro.medium.com/max/875/0*9qPr-9cUHoYnMYxs?raw=true)
 
 Example of Bayesian network visualization with custom nodes and circle layout.
 ```r
