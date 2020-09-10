@@ -126,6 +126,7 @@
 #' @references See online documentation \url{http://robsonfernandes.net/bnviewer}
 #'
 #' @importFrom  methods is
+#' @importFrom  graphics legend
 #'
 #' @export
 #'
@@ -178,8 +179,8 @@
 #' )
 #'
 strength.viewer <- function(bayesianNetwork,
-                            bayesianNetwork.background = NULL,
                             bayesianNetwork.boot.strength,
+                            bayesianNetwork.background = NULL,
                             bayesianNetwork.arc.strength.threshold.expression = NULL,
                             bayesianNetwork.arc.strength.threshold.expression.color = NULL,
                             bayesianNetwork.arc.strength.threshold.alternative.color = NULL,
@@ -643,7 +644,7 @@ strength.viewer <- function(bayesianNetwork,
             }
 
             df_legend <- data.frame(group = group.collection,color = color.collection)
-            legend(x=-1.9, y=0.5,
+            graphics::legend(x=-1.9, y=0.5,
                    legend = df_legend$group,
                    pch = 19,
                    col = df_legend$color,

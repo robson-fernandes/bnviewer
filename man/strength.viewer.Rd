@@ -6,8 +6,8 @@
 \usage{
 strength.viewer(
   bayesianNetwork,
-  bayesianNetwork.background = NULL,
   bayesianNetwork.boot.strength,
+  bayesianNetwork.background = NULL,
   bayesianNetwork.arc.strength.threshold.expression = NULL,
   bayesianNetwork.arc.strength.threshold.expression.color = NULL,
   bayesianNetwork.arc.strength.threshold.alternative.color = NULL,
@@ -44,9 +44,9 @@ strength.viewer(
 \arguments{
 \item{bayesianNetwork}{A Bayesian Network structure from Averaged Network}
 
-\item{bayesianNetwork.background}{Bayesian network background}
-
 \item{bayesianNetwork.boot.strength}{A nonparametric bootstrap to assess arc strength and direction}
+
+\item{bayesianNetwork.background}{Bayesian network background}
 
 \item{bayesianNetwork.arc.strength.threshold.expression}{Logical expression of the force threshold of the arcs of the Bayesian network}
 
