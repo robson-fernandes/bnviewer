@@ -80,8 +80,8 @@ viewer(bn.learn.hc,
 	bayesianNetwork.subtitle = "Monitoring of emergency care patients",
 	bayesianNetwork.footer = "Fig. 1 - Layout with Sugiyama"
 )
-```	
--![Bayesian Network](https://miro.medium.com/max/875/0*tbmDZ36wt_8_gFVe?raw=true)
+```
+<img src="https://miro.medium.com/max/875/0*tbmDZ36wt_8_gFVe?raw=true" width="200px">
 
 Example of Bayesian network visualization with custom nodes and grid layout.
 ```r
