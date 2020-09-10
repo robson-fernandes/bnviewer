@@ -17,7 +17,7 @@ structure = model.to.structure(model.right.arrow)
 viewer(structure,
        bayesianNetwork.width = "100%",
        bayesianNetwork.height = "100vh",
-       bayesianNetwork.enabled.interactive.mode = TRUE,
+       # bayesianNetwork.enabled.interactive.mode = TRUE,
        edges.smooth = FALSE,
        bayesianNetwork.layout = "layout_with_gem",
        node.colors = list(background = "#f4bafd",
@@ -51,6 +51,6 @@ viewer(structure,
 
       )
 
-data.set = bnlearn::insurance
+data.set = subset(bnlearn::insurance, select = names(structure$nodes))
 
 bayesianNetwork.fit = bn.fit(structure, data = data.set)
