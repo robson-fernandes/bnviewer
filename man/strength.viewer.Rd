@@ -2,9 +2,11 @@
 % Please edit documentation in R/strength.viewer.R
 \name{strength.viewer}
 \alias{strength.viewer}
-\title{Interactive Bayesian Network Strength Viewer.}
+\title{Interactive Bayesian Network Strength Viewer}
 \usage{
-strength.viewer(bayesianNetwork, bayesianNetwork.background = NULL,
+strength.viewer(
+  bayesianNetwork,
+  bayesianNetwork.background = NULL,
   bayesianNetwork.boot.strength = NULL,
   bayesianNetwork.arc.strength.threshold.expression = NULL,
   bayesianNetwork.arc.strength.threshold.expression.color = NULL,
@@ -17,13 +19,25 @@ strength.viewer(bayesianNetwork, bayesianNetwork.background = NULL,
   bayesianNetwork.edge.scale.max = 5,
   bayesianNetwork.edge.scale.label.min = 14,
   bayesianNetwork.edge.scale.label.max = 14,
-  bayesianNetwork.title = "", bayesianNetwork.subtitle = "",
-  bayesianNetwork.footer = "", bayesianNetwork.layout = "default",
-  bayesianNetwork.width = "100\%", bayesianNetwork.height = "500px",
-  node.shape = c("dot"), node.label.prefix = "",
-  node.colors = list(), node.font = list(), edges.smooth = TRUE,
-  edges.dashes = FALSE, edges.colors = list(),
-  options.highlightNearest = TRUE, options.nodesIdSelection = FALSE)
+  bayesianNetwork.title = "",
+  bayesianNetwork.subtitle = "",
+  bayesianNetwork.footer = "",
+  bayesianNetwork.layout = "default",
+  bayesianNetwork.width = "100\%",
+  bayesianNetwork.height = "500px",
+  node.shape = NULL,
+  node.label.prefix = "",
+  node.colors = list(),
+  node.font = list(),
+  edges.smooth = TRUE,
+  edges.dashes = FALSE,
+  edges.colors = list(),
+  options.highlightNearest = TRUE,
+  options.nodesIdSelection = FALSE,
+  clusters.legend.title = "",
+  clusters.legend.options = list(),
+  clusters = list()
+)
 }
 \arguments{
 \item{bayesianNetwork}{A Bayesian Network structure from Averaged Network}
@@ -75,6 +89,10 @@ strength.viewer(bayesianNetwork, bayesianNetwork.background = NULL,
   \item layout_with_gem
   \item layout_nicely
   \item layout_components
+  \item layout_hierarchical_direction_UD
+  \item layout_hierarchical_direction_DU
+  \item layout_hierarchical_direction_LR
+  \item layout_hierarchical_direction_RL
 }}
 
 \item{bayesianNetwork.width}{: String. Bayesian Network width}
@@ -130,6 +148,12 @@ Can be just one color, or a list with several elements:
 \item{options.highlightNearest}{: Boolean. Default to true. Highlight nearest when clicking a node.}
 
 \item{options.nodesIdSelection}{: Boolean. Default to false. Add an id node selection creating an HTML select element.}
+
+\item{clusters.legend.title}{: Array.  Get details in the example.}
+
+\item{clusters.legend.options}{: Array of Array. Get details in the example.}
+
+\item{clusters}{: Array of Array. Get details in the example.}
 }
 \description{
 Show the strength of the probabilistic relationships expressed by the arcs of

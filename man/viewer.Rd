@@ -4,16 +4,33 @@
 \alias{viewer}
 \title{Interactive Bayesian Network Viewer}
 \usage{
-viewer(bayesianNetwork, bayesianNetwork.title = "",
-  bayesianNetwork.subtitle = "", bayesianNetwork.footer = "",
-  bayesianNetwork.layout = "default", bayesianNetwork.width = "100\%",
-  bayesianNetwork.height = "500px", node.shape = c("dot"),
-  node.label.prefix = "", node.colors = list(), edges.smooth = TRUE,
-  edges.dashes = FALSE, options.highlightNearest = TRUE,
-  options.nodesIdSelection = FALSE)
+viewer(
+  bayesianNetwork,
+  bayesianNetwork.background = NULL,
+  bayesianNetwork.title = "",
+  bayesianNetwork.subtitle = "",
+  bayesianNetwork.footer = "",
+  bayesianNetwork.enabled.interactive.mode = FALSE,
+  bayesianNetwork.layout = "default",
+  bayesianNetwork.width = "100\%",
+  bayesianNetwork.height = "500px",
+  node.shape = NULL,
+  node.label.prefix = "",
+  node.colors = list(),
+  node.font = list(),
+  edges.smooth = TRUE,
+  edges.dashes = FALSE,
+  options.highlightNearest = TRUE,
+  options.nodesIdSelection = FALSE,
+  clusters.legend.title = "",
+  clusters.legend.options = list(),
+  clusters = list()
+)
 }
 \arguments{
 \item{bayesianNetwork}{A Bayesian Network structure. (Example : hill-climbing (HC)).}
+
+\item{bayesianNetwork.background}{Bayesian network background}
 
 \item{bayesianNetwork.title}{: String. Bayesian Network title}
 
@@ -21,7 +38,11 @@ viewer(bayesianNetwork, bayesianNetwork.title = "",
 
 \item{bayesianNetwork.footer}{: String. Bayesian Network footer}
 
-\item{bayesianNetwork.layout}{: String. A layout of a Bayesian Network
+\item{bayesianNetwork.enabled.interactive.mode}{: Boolean. Enabled interactive viewer mode.}
+
+\item{bayesianNetwork.layout}{: String. A layout of a Bayesian Network.
+The hierarchical layout the available options are: UD, DU, LR, RL.
+To simplify: up-down, down-up, left-right, right-left.
 \enumerate{
   \item layout_on_sphere
   \item layout_on_grid
@@ -36,6 +57,10 @@ viewer(bayesianNetwork, bayesianNetwork.title = "",
   \item layout_with_gem
   \item layout_nicely
   \item layout_components
+  \item layout_hierarchical_direction_UD
+  \item layout_hierarchical_direction_DU
+  \item layout_hierarchical_direction_LR
+  \item layout_hierarchical_direction_RL
 }}
 
 \item{bayesianNetwork.width}{: String. Bayesian Network width}
@@ -72,6 +97,8 @@ Can be just one color, or a list with several elements:
   }
 }}
 
+\item{node.font}{Node Font : Array. Example list(color = "black", face="Arial")}
+
 \item{edges.smooth}{: Boolean. When true, the edge is drawn as a dynamic quadratic bezier curve.}
 
 \item{edges.dashes}{: Array or Boolean. Default to false. When true, the edge will be drawn as a dashed line.}
@@ -79,6 +106,12 @@ Can be just one color, or a list with several elements:
 \item{options.highlightNearest}{: Boolean. Default to true. Highlight nearest when clicking a node.}
 
 \item{options.nodesIdSelection}{: Boolean. Default to false. Add an id node selection creating an HTML select element.}
+
+\item{clusters.legend.title}{: Array.  Get details in the example.}
+
+\item{clusters.legend.options}{: Array of Array. Get details in the example.}
+
+\item{clusters}{: Array of Array. Get details in the example.}
 }
 \description{
 Interactive Bayesian Network Viewer
@@ -88,25 +121,77 @@ Interactive Bayesian Network Viewer
 library(bnlearn)
 library(bnviewer)
 
-data(coronary)
-bn.learn.hc = hc(coronary)
+data("alarm")
+bayesianNetwork = hc(alarm)
 
-viewer(bn.learn.hc,
-     bayesianNetwork.width = "100\%",
-     bayesianNetwork.height = "80vh",
-     bayesianNetwork.layout = "layout_as_star",
-     bayesianNetwork.title="Discrete Bayesian Network - Coronary",
-     bayesianNetwork.subtitle = "Coronary heart disease data set",
-     bayesianNetwork.footer = "Fig. 1 - Layout as star",
-     edges.smooth = TRUE,
-     node.colors = list(background = "#f4bafd",
-                        border = "#2b7ce9",
-                        highlight = list(background = "#97c2fc",
-                                         border = "#2b7ce9"))
+viewer(bayesianNetwork,
+       bayesianNetwork.background = "-webkit-radial-gradient(center, ellipse cover,
+                                                             rgba(255,255,255,1) 0\%,
+                                                             rgba(246,246,246,1) 47\%,
+                                                             rgba(237,237,237,1) 100\%)",
+       bayesianNetwork.width = "100\%",
+       bayesianNetwork.height = "100vh",
+       bayesianNetwork.layout = "layout_components",
+       bayesianNetwork.title="<br>Discrete Bayesian Network - Alarm",
+       bayesianNetwork.subtitle = "Monitoring of emergency care patients",
+
+       node.colors = list(background = "white",
+                          border = "black",
+                          highlight = list(background = "#e91eba",
+                                           border = "black")),
+       node.font = list(color = "black", face="Arial"),
+
+       clusters.legend.title = list(text = "<b>Legend</b> <br> Variable Categories",
+                                    style = "font-size:18px;
+                                             font-family:Arial;
+                                             color:black;
+                                             text-align:center;"),
+       clusters.legend.options = list(
+         list(label = "Pressure",
+              shape = "icon",
+              icon = list(code = "f1ce",
+                          size = 50,
+                          color = "#e91e63")),
+         list(label = "Volume",
+              shape = "icon",
+              icon = list(code = "f140",
+                          size = 50,
+                          color = "#03a9f4")),
+         list(label = "Ventilation",
+              shape = "icon",
+              icon = list(code = "f192",
+                          size = 50,
+                          color = "#4caf50")),
+         list(label = "Saturation",
+              shape = "icon",
+              icon = list(code = "f10c",
+                          size = 50,
+                          color = "#ffc107"))
+       ),
+
+       clusters = list(
+         list(label = "Pressure",
+              shape = "icon",
+              icon = list(code = "f1ce", color = "#e91e63"),
+              nodes = list("CVP","BP","HRBP","PAP","PRSS")),
+         list(label = "Volume",
+              shape = "icon",
+              icon = list(code = "f140", color = "#03a9f4"),
+              nodes = list("MINV","MVS","LVV","STKV")),
+         list(label = "Ventilation",
+              shape = "icon",
+              icon = list(code = "f192", color = "#4caf50"),
+              nodes = list("VALV","VLNG","VTUB","VMCH")),
+         list(label = "Saturation",
+              shape = "icon",
+              icon = list(code = "f10c", color = "#ffc107"),
+              nodes = list("HRSA","SAO2","PVS"))
+       )
 )
-
 
 }
 \references{
 See online documentation \url{http://robsonfernandes.net/bnviewer}
+
+See the code fontAwesome for icons in groups and nodes \url{https://fontawesome.com/v4.7.0/cheatsheet/}
 }

@@ -2,7 +2,8 @@ library(bnlearn)
 library(bnviewer)
 
 data(coronary)
-bn.learn.hc = hc(coronary)
+bn.learn.hc = hc(alarm)
+
 
 viewer(bn.learn.hc,
      bayesianNetwork.width = "100%",
