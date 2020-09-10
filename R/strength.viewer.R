@@ -274,6 +274,10 @@ strength.viewer <- function(bayesianNetwork,
                             Specify a list object of class bn.
                             See ?bnlearn::bn.strength for more detail")
 
+    assertthat::assert_that("bn.strength" %in% class(bayesianNetwork.boot.strength),
+                            msg = "Argument bayesianNetwork.boot.strength is not a list object of class bn.
+                            See ?bnlearn::bn.strength for more detail")
+
     for (i in seq_along(from.collection)){
 
       from = from.collection[i]
