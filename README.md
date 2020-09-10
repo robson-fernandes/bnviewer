@@ -101,6 +101,7 @@ viewer(bn.learn.hc,
 	
 )
 ```
+
 <img src="https://miro.medium.com/max/875/0*9qPr-9cUHoYnMYxs">
 
 Example of Bayesian network visualization with custom nodes and circle layout.
@@ -120,4 +121,5 @@ viewer(bn.learn.hc,
 
 )
 ```
+
 <img src="https://miro.medium.com/max/875/0*9pqisjJbu8ASt2wy">
