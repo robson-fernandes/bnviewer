@@ -81,8 +81,7 @@ viewer(bn.learn.hc,
 	bayesianNetwork.footer = "Fig. 1 - Layout with Sugiyama"
 )
 ```	
-
-<img src="https://miro.medium.com/max/875/0*tbmDZ36wt_8_gFVe?raw=true">
+-![Bayesian Network](https://miro.medium.com/max/875/0*tbmDZ36wt_8_gFVe?raw=true)
 
 Example of Bayesian network visualization with custom nodes and grid layout.
 ```r
