@@ -18,4 +18,13 @@ Encoding: UTF-8
 LazyData: true
 RoxygenNote: 7.1.1
 Repository: CRAN
-Imports: visNetwork (>= 2.0.4), bnlearn (>= 4.3), methods, igraph (>= 1.2.4), shiny
+Imports: 
+    visNetwork (>= 2.0.4),
+    bnlearn (>= 4.3),
+    methods,
+    igraph (>= 1.2.4),
+    shiny,
+    assertthat,
+    caret,
+    e1071,
+    graphics

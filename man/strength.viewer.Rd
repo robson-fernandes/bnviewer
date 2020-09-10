@@ -7,7 +7,7 @@
 strength.viewer(
   bayesianNetwork,
   bayesianNetwork.background = NULL,
-  bayesianNetwork.boot.strength = NULL,
+  bayesianNetwork.boot.strength,
   bayesianNetwork.arc.strength.threshold.expression = NULL,
   bayesianNetwork.arc.strength.threshold.expression.color = NULL,
   bayesianNetwork.arc.strength.threshold.alternative.color = NULL,
@@ -22,6 +22,7 @@ strength.viewer(
   bayesianNetwork.title = "",
   bayesianNetwork.subtitle = "",
   bayesianNetwork.footer = "",
+  bayesianNetwork.enabled.interactive.mode = FALSE,
   bayesianNetwork.layout = "default",
   bayesianNetwork.width = "100\%",
   bayesianNetwork.height = "500px",
@@ -29,6 +30,7 @@ strength.viewer(
   node.label.prefix = "",
   node.colors = list(),
   node.font = list(),
+  node.size = 10,
   edges.smooth = TRUE,
   edges.dashes = FALSE,
   edges.colors = list(),
@@ -73,6 +75,8 @@ strength.viewer(
 \item{bayesianNetwork.subtitle}{: String. Bayesian Network subtitle}
 
 \item{bayesianNetwork.footer}{: String. Bayesian Network footer}
+
+\item{bayesianNetwork.enabled.interactive.mode}{: Boolean. Enabled interactive viewer mode.}
 
 \item{bayesianNetwork.layout}{: String. A layout of a Bayesian Network
 \enumerate{
@@ -130,6 +134,8 @@ Can be just one color, or a list with several elements:
 }}
 
 \item{node.font}{Node Font : Array. Example list(color = "black", face="Arial")}
+
+\item{node.size}{Integer. Node Size.}
 
 \item{edges.smooth}{: Boolean. When true, the edge is drawn as a dynamic quadratic bezier curve.}
 
