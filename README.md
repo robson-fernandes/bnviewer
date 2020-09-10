@@ -82,7 +82,7 @@ viewer(bn.learn.hc,
 )
 ```	
 
-<img src="https://miro.medium.com/max/875/0*tbmDZ36wt_8_gFVe">
+<img src="https://miro.medium.com/max/875/0*tbmDZ36wt_8_gFVe?raw=true">
 
 Example of Bayesian network visualization with custom nodes and grid layout.
 ```r
@@ -102,7 +102,7 @@ viewer(bn.learn.hc,
 )
 ```
 
-<img src="https://miro.medium.com/max/875/0*9qPr-9cUHoYnMYxs">
+<img src="https://miro.medium.com/max/875/0*9qPr-9cUHoYnMYxs?raw=true">
 
 Example of Bayesian network visualization with custom nodes and circle layout.
 ```r
@@ -122,4 +122,4 @@ viewer(bn.learn.hc,
 )
 ```
 
-<img src="https://miro.medium.com/max/875/0*9pqisjJbu8ASt2wy">
+<img src="https://miro.medium.com/max/875/0*9pqisjJbu8ASt2wy?raw=true">
