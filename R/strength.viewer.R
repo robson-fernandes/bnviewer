@@ -95,6 +95,8 @@
 #'   }
 #' }
 #'
+#' @param node.label Replace node labels : Array with old labels as key and new label as value. Example list(old = "new", foo="bar")
+#'
 #' @param node.font Node Font : Array. Example list(color = "black", face="Arial")
 #'
 #' @param node.size Integer. Node Size.
@@ -205,6 +207,7 @@ strength.viewer <- function(bayesianNetwork,
                             bayesianNetwork.height = "500px",
 
                             node.shape = NULL,
+                            node.label = list(),
                             node.label.prefix = "",
                             node.colors = list(),
                             node.font = list(),
@@ -231,7 +234,55 @@ strength.viewer <- function(bayesianNetwork,
       "nodes"  %in% names(bayesianNetwork) &
       "arcs"  %in% names(bayesianNetwork) |
       is(bayesianNetwork,BNLearnClass))
-  {
+    {
+
+    if (!missing(node.label)&(is.list(node.label))){
+      # change node labels if specified
+      bayesianNetwork.boot.strength$from <- mapvalues(bayesianNetwork.boot.strength$from,
+                                        from = names(node.label),
+                                        to = unlist(node.label,
+                                                    use.names = FALSE),
+                                        warn_missing = FALSE)
+      bayesianNetwork.boot.strength$to <- mapvalues(bayesianNetwork.boot.strength$to,
+                                      from = names(node.label),
+                                      to = unlist(node.label,
+                                                  use.names = FALSE),
+                                      warn_missing = FALSE)
+      names(bayesianNetwork$nodes) <- mapvalues(names(bayesianNetwork$nodes),
+                                                              from = names(node.label),
+                                                              to = unlist(node.label,
+                                                                          use.names = FALSE),
+                                                              warn_missing = FALSE)
+      bayesianNetwork$arcs[,1] <- mapvalues(bayesianNetwork$arcs[,1],
+                                            from = names(node.label),
+                                            to = unlist(node.label,
+                                                        use.names = FALSE),
+                                            warn_missing = FALSE)
+      bayesianNetwork$arcs[,2] <- mapvalues(bayesianNetwork$arcs[,2],
+                                            from = names(node.label),
+                                            to = unlist(node.label,
+                                                        use.names = FALSE),
+                                            warn_missing = FALSE)
+      for (node in seq(1,length(bayesianNetwork$nodes))) {
+        names(bayesianNetwork$nodes[node]) <- mapvalues(names(bayesianNetwork$nodes[node]),
+                                                        from = names(node.label),
+                                                        to = unlist(node.label,
+                                                                    use.names = FALSE),
+                                                        warn_missing = FALSE)
+        for (attrib in seq(1,length(bayesianNetwork$nodes[[node]]))){
+          bayesianNetwork$nodes[[node]][[attrib]] <- mapvalues(unlist(bayesianNetwork$nodes[[node]][[attrib]], use.names = FALSE),
+                                                             from = names(node.label),
+                                                             to = unlist(node.label,
+                                                                         use.names = FALSE),
+                                                             warn_missing = FALSE)
+        }
+      }
+      warning("Node labels are changed.")
+    } else {
+      assertthat::assert_that(is.list(node.label),
+                              msg = "Argument node.label is not in list format.
+                              Specify a list object i.e. list(old_node_name = 'new_node_name', foo = 'bar')")
+    }
 
     nodes = names(bayesianNetwork$nodes)
     from.collection = bayesianNetwork$arcs[,1]

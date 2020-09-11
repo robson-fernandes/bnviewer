@@ -27,6 +27,7 @@ strength.viewer(
   bayesianNetwork.width = "100\%",
   bayesianNetwork.height = "500px",
   node.shape = NULL,
+  node.label = list(),
   node.label.prefix = "",
   node.colors = list(),
   node.font = list(),
@@ -116,6 +117,8 @@ strength.viewer(
   \item star
   \item text
 }}
+
+\item{node.label}{Replace node labels : Array with old labels as key and new label as value. Example list(old = "new", foo="bar")}
 
 \item{node.label.prefix}{: String. Adds a prefix to the node label}
 
