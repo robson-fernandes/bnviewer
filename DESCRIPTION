@@ -27,4 +27,5 @@ Imports:
     assertthat,
     caret,
     e1071,
-    graphics
+    graphics,
+    plyr
