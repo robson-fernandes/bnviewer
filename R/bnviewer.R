@@ -42,6 +42,13 @@ require(visNetwork)
 #'
 #' @param bayesianNetwork.height : String. Bayesian Network height
 #'
+#' @param bayesianNetwork.data : List. Data Set.
+#'
+#' @param bayesianNetwork.correlation.show : Boolean. When true, show Correlation Coefficient. Default (FALSE).
+#'
+#' @param bayesianNetwork.correlation.method : String. Correlation Coefficient.
+#' One of "pearson" (default), "kendall", or "spearman"
+#'
 #' @param node.shape : String. A node shape of a Bayesian Network
 #' \enumerate{
 #'   \item dot (default)
@@ -78,7 +85,13 @@ require(visNetwork)
 #'
 #' @param edges.dashes : Array or Boolean. Default to false. When true, the edge will be drawn as a dashed line.
 #'
-#' @param edges.width : Number. Default to 1. Sets edge width.
+#' @param edges.width : Number. Sets edge width. Default to 1.
+#'
+#' @param edges.font.size : Number. Font Size. Default to 18.
+#'
+#' @param edges.font.color : String. Font Color. Default to 'black'.
+#'
+#' @param edges.shadow : Boolean. Shadow. Default to FALSE.
 #'
 #' @param options.highlightNearest : Boolean. Default to true. Highlight nearest when clicking a node.
 #'
@@ -89,6 +102,7 @@ require(visNetwork)
 #' @param clusters.legend.options : Array of Array. Get details in the example.
 #'
 #' @param clusters : Array of Array. Get details in the example.
+#'
 #'
 #' @references See online documentation \url{http://robsonfernandes.net/bnviewer}
 #'
@@ -180,6 +194,10 @@ viewer <- function(bayesianNetwork,
                    bayesianNetwork.layout = "default",
                    bayesianNetwork.width = "100%",
                    bayesianNetwork.height = "500px",
+                   bayesianNetwork.data = NULL,
+                   bayesianNetwork.correlation.show = FALSE,
+                   bayesianNetwork.correlation.method = 'pearson',
+
 
                    node.shape = NULL,
                    node.label.prefix = "",
@@ -189,6 +207,9 @@ viewer <- function(bayesianNetwork,
                    edges.smooth = TRUE,
                    edges.dashes = FALSE,
                    edges.width = 1,
+                   edges.font.size = 18,
+                   edges.font.color = 'black',
+                   edges.shadow = FALSE,
 
                    options.highlightNearest = TRUE,
                    options.nodesIdSelection = FALSE,
@@ -212,6 +233,28 @@ viewer <- function(bayesianNetwork,
     nodes = names(bayesianNetwork$nodes)
     from.collection = bayesianNetwork$arcs[,1]
     to.collection = bayesianNetwork$arcs[,2]
+
+    #------------------------------
+    #Correlation
+    #------------------------------
+    correlation.collection = c()
+
+    if (bayesianNetwork.correlation.show == TRUE)
+    {
+      for(i in 1:length(from.collection)){
+        from = from.collection[i]
+        to = to.collection[i]
+
+        cor.value = round(stats::cor(bayesianNetwork.data[from],bayesianNetwork.data[to], method = bayesianNetwork.correlation.method),3)
+        correlation.collection <- c(correlation.collection,cor.value)
+      }
+    }
+    else{
+      correlation.collection = NULL
+    }
+
+
+    #------------------------------
 
     group = c()
     if (length(clusters) > 0){
@@ -250,11 +293,30 @@ viewer <- function(bayesianNetwork,
     if (length(group) > 0)
       nodes$group = group
 
-    edges <- data.frame(from = from.collection,
-                        to = to.collection,
-                        smooth=edges.smooth,
-                        dashes=edges.dashes,
-                        width=edges.width)
+    if (is.null(correlation.collection))
+    {
+      edges <- data.frame(from = from.collection,
+                          to = to.collection,
+                          smooth=edges.smooth,
+                          dashes=edges.dashes,
+                          width=edges.width,
+                          font.size = edges.font.size,
+                          font.color = edges.font.color,
+                          shadow = edges.shadow)
+    }
+    else{
+      edges <- data.frame(from = from.collection,
+                          to = to.collection,
+                          smooth=edges.smooth,
+                          dashes=edges.dashes,
+                          width=edges.width,
+                          label=correlation.collection,
+
+                          font.size = edges.font.size,
+                          font.color = edges.font.color,
+                          shadow = edges.shadow)
+    }
+
 
     vis.network = visNetwork::visNetwork(nodes,
                                          edges,

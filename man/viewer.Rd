@@ -14,6 +14,9 @@ viewer(
   bayesianNetwork.layout = "default",
   bayesianNetwork.width = "100\%",
   bayesianNetwork.height = "500px",
+  bayesianNetwork.data = NULL,
+  bayesianNetwork.correlation.show = FALSE,
+  bayesianNetwork.correlation.method = "pearson",
   node.shape = NULL,
   node.label.prefix = "",
   node.colors = list(),
@@ -21,6 +24,9 @@ viewer(
   edges.smooth = TRUE,
   edges.dashes = FALSE,
   edges.width = 1,
+  edges.font.size = 18,
+  edges.font.color = "black",
+  edges.shadow = FALSE,
   options.highlightNearest = TRUE,
   options.nodesIdSelection = FALSE,
   clusters.legend.title = "",
@@ -68,6 +74,13 @@ To simplify: up-down, down-up, left-right, right-left.
 
 \item{bayesianNetwork.height}{: String. Bayesian Network height}
 
+\item{bayesianNetwork.data}{: List. Data Set.}
+
+\item{bayesianNetwork.correlation.show}{: Boolean. When true, show Correlation Coefficient. Default (FALSE).}
+
+\item{bayesianNetwork.correlation.method}{: String. Correlation Coefficient.
+One of "pearson" (default), "kendall", or "spearman"}
+
 \item{node.shape}{: String. A node shape of a Bayesian Network
 \enumerate{
   \item dot (default)
@@ -104,7 +117,13 @@ Can be just one color, or a list with several elements:
 
 \item{edges.dashes}{: Array or Boolean. Default to false. When true, the edge will be drawn as a dashed line.}
 
-\item{edges.width}{: Number. Default to 1. Sets edge width.}
+\item{edges.width}{: Number. Sets edge width. Default to 1.}
+
+\item{edges.font.size}{: Number. Font Size. Default to 18.}
+
+\item{edges.font.color}{: String. Font Color. Default to 'black'.}
+
+\item{edges.shadow}{: Boolean. Shadow. Default to FALSE.}
 
 \item{options.highlightNearest}{: Boolean. Default to true. Highlight nearest when clicking a node.}
 

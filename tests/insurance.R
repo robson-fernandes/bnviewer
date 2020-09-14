@@ -50,7 +50,3 @@ viewer(structure,
        )
 
       )
-
-data.set = subset(bnlearn::insurance, select = names(structure$nodes))
-
-bayesianNetwork.fit = bn.fit(structure, data = data.set)

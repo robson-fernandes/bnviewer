@@ -1,7 +1,7 @@
 Package: bnviewer
 Type: Package
-Title: Interactive Visualization of Bayesian Networks
-Version: 0.1.5
+Title: Bayesian Networks Interactive Visualization and Explainable Artificial Intelligence
+Version: 0.1.6
 Depends: R (>= 3.4)
 Author: Robson Fernandes
 Maintainer: Robson Fernandes <robson.fernandes@usp.br>
