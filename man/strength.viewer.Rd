@@ -27,6 +27,7 @@ strength.viewer(
   bayesianNetwork.width = "100\%",
   bayesianNetwork.height = "500px",
   node.shape = NULL,
+  node.label = list(),
   node.label.prefix = "",
   node.colors = list(),
   node.font = list(),
@@ -34,7 +35,6 @@ strength.viewer(
   edges.smooth = TRUE,
   edges.dashes = FALSE,
   edges.colors = list(),
-  edges.width = 1,
   options.highlightNearest = TRUE,
   options.nodesIdSelection = FALSE,
   clusters.legend.title = "",
@@ -118,6 +118,8 @@ strength.viewer(
   \item text
 }}
 
+\item{node.label}{Replace node labels : Array with old labels as key and new label as value. Example list(old = "new", foo="bar")}
+
 \item{node.label.prefix}{: String. Adds a prefix to the node label}
 
 \item{node.colors}{: String | named list. Color for the node. Can be 'rgba(120,32,14,1)', '#97C2FC'
@@ -151,8 +153,6 @@ Can be just one color, or a list with several elements:
  \item{"inherit"}{ : String or Boolean. Default to 'from'. When color, highlight or hover are defined, inherit is set to false! Supported options are: true, false, 'from','to','both'.}
  \item{"opacity"}{ : Number. Default to 1.0. It can be useful to set the opacity of an edge without manually changing all the colors. The allowed range of the opacity option is between 0 and 1.}
 }}
-
-\item{edges.width}{: Number. Default to 1. Sets edge width.}
 
 \item{options.highlightNearest}{: Boolean. Default to true. Highlight nearest when clicking a node.}
 

@@ -95,6 +95,8 @@
 #'   }
 #' }
 #'
+#' @param node.label Replace node labels : Array with old labels as key and new label as value. Example list(old = "new", foo="bar")
+#'
 #' @param node.font Node Font : Array. Example list(color = "black", face="Arial")
 #'
 #' @param node.size Integer. Node Size.
@@ -112,8 +114,6 @@
 #'  \item{"inherit"}{ : String or Boolean. Default to 'from'. When color, highlight or hover are defined, inherit is set to false! Supported options are: true, false, 'from','to','both'.}
 #'  \item{"opacity"}{ : Number. Default to 1.0. It can be useful to set the opacity of an edge without manually changing all the colors. The allowed range of the opacity option is between 0 and 1.}
 #'}
-#'
-#' @param edges.width : Number. Default to 1. Sets edge width.
 #'
 #' @param options.highlightNearest : Boolean. Default to true. Highlight nearest when clicking a node.
 #'
@@ -207,6 +207,7 @@ strength.viewer <- function(bayesianNetwork,
                             bayesianNetwork.height = "500px",
 
                             node.shape = NULL,
+                            node.label = list(),
                             node.label.prefix = "",
                             node.colors = list(),
                             node.font = list(),
@@ -215,7 +216,6 @@ strength.viewer <- function(bayesianNetwork,
                             edges.smooth = TRUE,
                             edges.dashes = FALSE,
                             edges.colors = list(),
-                            edges.width = 1,
 
                             options.highlightNearest = TRUE,
                             options.nodesIdSelection = FALSE,
@@ -234,7 +234,55 @@ strength.viewer <- function(bayesianNetwork,
       "nodes"  %in% names(bayesianNetwork) &
       "arcs"  %in% names(bayesianNetwork) |
       is(bayesianNetwork,BNLearnClass))
-  {
+    {
+
+    if (!missing(node.label)&(is.list(node.label))){
+      # change node labels if specified
+      bayesianNetwork.boot.strength$from <- plyr::mapvalues(bayesianNetwork.boot.strength$from,
+                                        from = names(node.label),
+                                        to = unlist(node.label,
+                                                    use.names = FALSE),
+                                        warn_missing = FALSE)
+      bayesianNetwork.boot.strength$to <- plyr::mapvalues(bayesianNetwork.boot.strength$to,
+                                      from = names(node.label),
+                                      to = unlist(node.label,
+                                                  use.names = FALSE),
+                                      warn_missing = FALSE)
+      names(bayesianNetwork$nodes) <- plyr::mapvalues(names(bayesianNetwork$nodes),
+                                                              from = names(node.label),
+                                                              to = unlist(node.label,
+                                                                          use.names = FALSE),
+                                                              warn_missing = FALSE)
+      bayesianNetwork$arcs[,1] <- plyr::mapvalues(bayesianNetwork$arcs[,1],
+                                            from = names(node.label),
+                                            to = unlist(node.label,
+                                                        use.names = FALSE),
+                                            warn_missing = FALSE)
+      bayesianNetwork$arcs[,2] <- plyr::mapvalues(bayesianNetwork$arcs[,2],
+                                            from = names(node.label),
+                                            to = unlist(node.label,
+                                                        use.names = FALSE),
+                                            warn_missing = FALSE)
+      for (node in seq(1,length(bayesianNetwork$nodes))) {
+        names(bayesianNetwork$nodes[node]) <- plyr::mapvalues(names(bayesianNetwork$nodes[node]),
+                                                        from = names(node.label),
+                                                        to = unlist(node.label,
+                                                                    use.names = FALSE),
+                                                        warn_missing = FALSE)
+        for (attrib in seq(1,length(bayesianNetwork$nodes[[node]]))){
+          bayesianNetwork$nodes[[node]][[attrib]] <- plyr::mapvalues(unlist(bayesianNetwork$nodes[[node]][[attrib]], use.names = FALSE),
+                                                             from = names(node.label),
+                                                             to = unlist(node.label,
+                                                                         use.names = FALSE),
+                                                             warn_missing = FALSE)
+        }
+      }
+      warning("Node labels are changed.")
+    } else {
+      assertthat::assert_that(is.list(node.label),
+                              msg = "Argument node.label is not in list format.
+                              Specify a list object i.e. list(old_node_name = 'new_node_name', foo = 'bar')")
+    }
 
     nodes = names(bayesianNetwork$nodes)
     from.collection = bayesianNetwork$arcs[,1]
@@ -310,8 +358,7 @@ strength.viewer <- function(bayesianNetwork,
                         to = to.collection,
                         smooth=edges.smooth,
                         dashes=edges.dashes,
-                        value=strength.collection,
-                        width=edges.width)
+                        value=strength.collection)
 
 
     if (length(group) > 0)
@@ -687,3 +734,4 @@ strength.viewer <- function(bayesianNetwork,
   }
 
 }
+
