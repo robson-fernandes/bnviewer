@@ -238,39 +238,39 @@ strength.viewer <- function(bayesianNetwork,
 
     if (!missing(node.label)&(is.list(node.label))){
       # change node labels if specified
-      bayesianNetwork.boot.strength$from <- mapvalues(bayesianNetwork.boot.strength$from,
+      bayesianNetwork.boot.strength$from <- plyr::mapvalues(bayesianNetwork.boot.strength$from,
                                         from = names(node.label),
                                         to = unlist(node.label,
                                                     use.names = FALSE),
                                         warn_missing = FALSE)
-      bayesianNetwork.boot.strength$to <- mapvalues(bayesianNetwork.boot.strength$to,
+      bayesianNetwork.boot.strength$to <- plyr::mapvalues(bayesianNetwork.boot.strength$to,
                                       from = names(node.label),
                                       to = unlist(node.label,
                                                   use.names = FALSE),
                                       warn_missing = FALSE)
-      names(bayesianNetwork$nodes) <- mapvalues(names(bayesianNetwork$nodes),
+      names(bayesianNetwork$nodes) <- plyr::mapvalues(names(bayesianNetwork$nodes),
                                                               from = names(node.label),
                                                               to = unlist(node.label,
                                                                           use.names = FALSE),
                                                               warn_missing = FALSE)
-      bayesianNetwork$arcs[,1] <- mapvalues(bayesianNetwork$arcs[,1],
+      bayesianNetwork$arcs[,1] <- plyr::mapvalues(bayesianNetwork$arcs[,1],
                                             from = names(node.label),
                                             to = unlist(node.label,
                                                         use.names = FALSE),
                                             warn_missing = FALSE)
-      bayesianNetwork$arcs[,2] <- mapvalues(bayesianNetwork$arcs[,2],
+      bayesianNetwork$arcs[,2] <- plyr::mapvalues(bayesianNetwork$arcs[,2],
                                             from = names(node.label),
                                             to = unlist(node.label,
                                                         use.names = FALSE),
                                             warn_missing = FALSE)
       for (node in seq(1,length(bayesianNetwork$nodes))) {
-        names(bayesianNetwork$nodes[node]) <- mapvalues(names(bayesianNetwork$nodes[node]),
+        names(bayesianNetwork$nodes[node]) <- plyr::mapvalues(names(bayesianNetwork$nodes[node]),
                                                         from = names(node.label),
                                                         to = unlist(node.label,
                                                                     use.names = FALSE),
                                                         warn_missing = FALSE)
         for (attrib in seq(1,length(bayesianNetwork$nodes[[node]]))){
-          bayesianNetwork$nodes[[node]][[attrib]] <- mapvalues(unlist(bayesianNetwork$nodes[[node]][[attrib]], use.names = FALSE),
+          bayesianNetwork$nodes[[node]][[attrib]] <- plyr::mapvalues(unlist(bayesianNetwork$nodes[[node]][[attrib]], use.names = FALSE),
                                                              from = names(node.label),
                                                              to = unlist(node.label,
                                                                          use.names = FALSE),
