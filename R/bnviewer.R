@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 library(shiny)
 require(visNetwork)
 
