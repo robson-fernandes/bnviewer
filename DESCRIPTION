@@ -1,7 +1,7 @@
 Package: bnviewer
 Type: Package
-Title: Interactive Visualization of Bayesian Networks
-Version: 0.1.5
+Title: Bayesian Networks Interactive Visualization and Explainable Artificial Intelligence
+Version: 0.1.6
 Depends: R (>= 3.4)
 Author: Robson Fernandes
 Maintainer: Robson Fernandes <robson.fernandes@usp.br>
@@ -27,37 +27,4 @@ Imports:
     assertthat,
     caret,
     e1071,
-    graphics,
-    plyr
-||||||| empty tree
-=======
-Package: bnviewer
-Type: Package
-Title: Bayesian Networks Interactive Visualization and Explainable Artificial Intelligence
-Version: 0.1.6
-Depends: R (>= 3.4)
-Authors@R: person("Robson", "Fernandes", email = "robson.fernandes@usp.br", role = c("aut", "cre", "cph"))
-Description: Bayesian networks provide an intuitive framework for probabilistic reasoning 
-             and its graphical nature can be interpreted quite clearly. Graph based methods 
-             of machine learning are becoming more popular because they offer a richer model 
-             of knowledge that can be understood by a human in a graphical format. The 'bnviewer' 
-             is an R Package that allows the interactive visualization of Bayesian Networks. 
-             The aim of this package is to improve the Bayesian Networks visualization over 
-             the basic and static views offered by existing packages.
-License: MIT + file LICENSE
-URL: http://robsonfernandes.net/bnviewer/
-Encoding: UTF-8
-LazyData: true
-RoxygenNote: 7.1.1
-Repository: CRAN
-Imports: 
-    visNetwork (>= 2.0.4),
-    bnlearn (>= 4.3),
-    methods,
-    igraph (>= 1.2.4),
-    shiny,
-    assertthat,
-    caret,
-    e1071,
     graphics
->>>>>>> 924e6786c8e589146e85c2f57866a314ea5a5fc7
