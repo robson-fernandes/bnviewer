@@ -4,6 +4,7 @@
 <a href="https://CRAN.R-project.org/package=bnviewer" rel="nofollow"><img src="https://cranlogs.r-pkg.org/badges/grand-total/bnviewer"></a>
 <a href="https://CRAN.R-project.org/package=bnviewer" rel="nofollow"><img src="https://cranlogs.r-pkg.org/badges/bnviewer"></a>
 <a href="https://github.com/robson-fernandes/bnviewer/blob/master/LICENSE"><img src="https://img.shields.io/github/license/mashape/apistatus.svg?maxAge=2592000"></a>
+<a href="https://github.com/matteodelucchi/bnviewer/actions"><img src="https://github.com/matteodelucchi/bnviewer/workflows/R/badge.svg"></a>
 </p>
 
 Bayesian networks provide an intuitive framework for probabilistic reasoning 
