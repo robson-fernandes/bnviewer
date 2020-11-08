@@ -3,7 +3,8 @@ Type: Package
 Title: Bayesian Networks Interactive Visualization and Explainable Artificial Intelligence
 Version: 0.1.6
 Depends: R (>= 3.4)
-Authors@R: person("Robson", "Fernandes", email = "robson.fernandes@usp.br", role = c("aut", "cre", "cph"))
+Author: Robson Fernandes
+Maintainer: Robson Fernandes <robson.fernandes@usp.br>
 Description: Bayesian networks provide an intuitive framework for probabilistic reasoning 
              and its graphical nature can be interpreted quite clearly. Graph based methods 
              of machine learning are becoming more popular because they offer a richer model 
